@@ -432,7 +432,7 @@ function removeContact(id) {
     return;
   }
 
-  const removed = dataContacts.splice(index, 1)[0]; // remove and capture the deleted contact
+  const removed = dataContacts.splice(index, 1)[0];
   console.log(`🗑️ Contact "${removed.name}" removed successfully.`);
 }
 
