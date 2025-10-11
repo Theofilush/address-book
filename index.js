@@ -375,7 +375,7 @@ const newDatacontacts = {
   updatedAt: new Date().toISOString(),
 };
 
-const newDataContactOnIndex3 = {
+const updateDataContactOnId3 = {
   email: "budi.santoso123@yahoo.com",
   phone: "081999888777",
   jobTitle: "Senior Backend Developer",
@@ -383,14 +383,11 @@ const newDataContactOnIndex3 = {
   isFavorite: true,
 };
 
-function displayContact(contacts) {
+function displayContacts(contacts) {
   for (let index = 0; index < contacts.length; index++) {
     const contact = contacts[index];
 
-    console.log(`
-👤 ${contact.name}
-📧 ${contact.email}
-📞 ${contact.phone}`);
+    console.log(`👤 ${contact.name} | 📧 ${contact.email} | 📱 ${contact.phone}`);
   }
 }
 
@@ -427,11 +424,35 @@ function editContact(id, updatedFields) {
   console.log(`✅ Contact "${dataContacts[index].name}" updated successfully.`);
 }
 
+function removeContact(id) {
+  const index = dataContacts.findIndex((contact) => contact.id === id);
+
+  if (index === -1) {
+    console.warn(`❌ Contact with ID ${id} not found.`);
+    return;
+  }
+
+  const removed = dataContacts.splice(index, 1)[0]; // remove and capture the deleted contact
+  console.log(`🗑️ Contact "${removed.name}" removed successfully.`);
+}
+
 console.log(dataContacts);
-displayContact(dataContacts);
+displayContacts(dataContacts);
+console.log("-------------------------------------------------------------------------------------------------------");
+
 pushContact(newDatacontacts);
-
+displayContacts(dataContacts);
 console.log(dataContacts);
-editContact(3);
+console.log("-------------------------------------------------------------------------------------------------------");
 
+// 3, Budi Santoso
+editContact(3, updateDataContactOnId3);
+displayContacts(dataContacts);
 console.log(dataContacts);
+console.log("-------------------------------------------------------------------------------------------------------");
+
+// 5, Dedi Pratama
+removeContact(5);
+displayContacts(dataContacts);
+console.log(dataContacts);
+console.log("-------------------------------------------------------------------------------------------------------");
