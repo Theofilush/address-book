@@ -4,10 +4,10 @@ const dataContacts = [
     name: "Yoga Prasetyo",
     nickname: "Yoga",
     email: "yoga.prasetyo@example.com",
-    phone: "081434567890",
+    phone: "+6281434567890",
     socialMedia: {
       instagram: "@yogaprasetyo",
-      linkedin: "linkedin.com/in/yogaprasetyo",
+      linkedin: "yogaprasetyo",
       twitter: "@yogacyber",
     },
     relationship: "Colleague",
@@ -31,14 +31,14 @@ const dataContacts = [
     birthday: "1990-10-11",
     company: "Borneo Tech",
     jobTitle: "Cybersecurity Analyst",
-    website: "https://borneotech.id",
+    websiteUrl: "https://borneotech.id",
   },
   {
     id: 2,
     name: "Siti Ramadhani",
     nickname: "Siti",
     email: "siti.ramadhani@example.com",
-    phone: "081345678901",
+    phone: "+6281345678901",
     socialMedia: {
       instagram: "@siti.design",
       linkedin: "linkedin.com/in/sitiramadhani",
@@ -65,7 +65,7 @@ const dataContacts = [
     birthday: "1992-04-05",
     company: "Kreatif Studio",
     jobTitle: "UI/UX Designer",
-    website: "https://kreatifstudio.id",
+    websiteUrl: "https://kreatifstudio.id",
   },
   {
     id: 3,
@@ -99,7 +99,7 @@ const dataContacts = [
     birthday: "1988-07-19",
     company: "Inovasi Digital",
     jobTitle: "Backend Developer",
-    website: "https://inovasidigital.id",
+    websiteUrl: "https://inovasidigital.id",
   },
   {
     id: 4,
@@ -133,7 +133,7 @@ const dataContacts = [
     birthday: "1993-03-22",
     company: "Jogja Web",
     jobTitle: "Frontend Developer",
-    website: "https://jogjaweb.id",
+    websiteUrl: "https://jogjaweb.id",
   },
   {
     id: 5,
@@ -167,7 +167,7 @@ const dataContacts = [
     birthday: "1987-09-05",
     company: "Solusi Cerdas",
     jobTitle: "DevOps Engineer",
-    website: "https://solusicerdas.id",
+    websiteUrl: "https://solusicerdas.id",
   },
   {
     id: 6,
@@ -201,7 +201,7 @@ const dataContacts = [
     birthday: "1993-02-14",
     company: "Digital Kreatif",
     jobTitle: "AI Researcher",
-    website: "https://digitalkreatif.co.id",
+    websiteUrl: "https://digitalkreatif.co.id",
   },
   {
     id: 7,
@@ -235,7 +235,7 @@ const dataContacts = [
     birthday: "1991-06-22",
     company: "Makassar Tech",
     jobTitle: "Fullstack Developer",
-    website: "https://makassartech.id",
+    websiteUrl: "https://makassartech.id",
   },
   {
     id: 9,
@@ -269,7 +269,7 @@ const dataContacts = [
     birthday: "1989-08-18",
     company: "Bali Tech",
     jobTitle: "Mobile Developer",
-    website: "https://balitech.id",
+    websiteUrl: "https://balitech.id",
   },
   {
     id: 10,
@@ -303,7 +303,7 @@ const dataContacts = [
     birthday: "1996-04-09",
     company: "Malang Kreatif",
     jobTitle: "Data Analyst",
-    website: "https://malangkreatif.co.id",
+    websiteUrl: "https://malangkreatif.co.id",
   },
   {
     id: 11,
@@ -337,62 +337,25 @@ const dataContacts = [
     birthday: "1995-12-15",
     company: "Crypto Nusantara",
     jobTitle: "Blockchain Developer",
-    website: "https://cryptonusantara.id",
+    websiteUrl: "https://cryptonusantara.id",
   },
 ];
-
-const newDatacontacts = {
-  name: "Taufik Hidayat",
-  nickname: "Taufik",
-  email: "taufik.hidayat@example.com",
-  phone: "081456789012",
-  address: {
-    street: "Jl. Slamet Riyadi No. 9",
-    rt: "004",
-    rw: "002",
-    subdistrict: "Purwodiningratan",
-    district: "Jebres",
-    city: "Solo",
-    province: "Jawa Tengah",
-    postalCode: "57126",
-    country: "Indonesia",
-  },
-  birthday: "1992-08-10",
-  company: "Solo Devs",
-  jobTitle: "Frontend Engineer",
-  website: "https://solodevs.id",
-  socialMedia: {
-    instagram: "@taufikhidayat",
-    linkedin: "linkedin.com/in/taufikhidayat",
-    twitter: "@taufikfe",
-  },
-  relationship: "Colleague",
-  notes: "React specialist",
-  group: "Work",
-  tags: ["react", "solo", "frontend"],
-  isFavorite: false,
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
-};
-
-const updateDataContactOnId3 = {
-  email: "budi.santoso123@yahoo.com",
-  phone: "081999888777",
-  jobTitle: "Senior Backend Developer",
-  tags: ["backend", "surabaya", "legacy", "senior"],
-  isFavorite: true,
-};
 
 function displayContacts(contacts) {
   for (let index = 0; index < contacts.length; index++) {
     const contact = contacts[index];
 
-    console.log(`👤 ${contact.name} | 📧 ${contact.email} | 📱 ${contact.phone}`);
+    console.log(
+      `👤 ${contact.name} | 📧 ${contact.email} | 📱 ${contact.phone}
+      // SHOW MORE FIELDS
+      `
+    );
   }
 }
 
-function pushContact(newContact) {
-  const lastId = dataContacts.length > 0 ? dataContacts[dataContacts.length - 1].id : 0;
+function addContact(newContact) {
+  const lastId =
+    dataContacts.length > 0 ? dataContacts[dataContacts.length - 1].id : 0;
   newContact.id = lastId + 1;
 
   const requiredFields = ["name", "email", "phone"];
@@ -421,7 +384,7 @@ function editContact(id, updatedFields) {
     updatedAt: new Date().toISOString(),
   };
 
-  console.log(`✅ Contact "${dataContacts[index].name}" updated successfully.`);
+  console.log(`✅ Contact "${dataContacts[index].name}" edited successfully.`);
 }
 
 function removeContact(id) {
@@ -436,23 +399,67 @@ function removeContact(id) {
   console.log(`🗑️ Contact "${removed.name}" removed successfully.`);
 }
 
-console.log(dataContacts);
-displayContacts(dataContacts);
-console.log("-------------------------------------------------------------------------------------------------------");
+function renderSeparatorLine() {
+  console.log(
+    "-------------------------------------------------------------------------------------------------------"
+  );
+}
 
-pushContact(newDatacontacts);
 displayContacts(dataContacts);
-console.log(dataContacts);
-console.log("-------------------------------------------------------------------------------------------------------");
+renderSeparatorLine();
+
+const newContactData = {
+  name: "Taufik Hidayat",
+  nickname: "Taufik",
+  email: "taufik.hidayat@example.com",
+  phone: "081456789012",
+  address: {
+    street: "Jl. Slamet Riyadi No. 9",
+    rt: "004",
+    rw: "002",
+    subdistrict: "Purwodiningratan",
+    district: "Jebres",
+    city: "Solo",
+    province: "Jawa Tengah",
+    postalCode: "57126",
+    country: "Indonesia",
+  },
+  birthday: "1992-08-10",
+  company: "Solo Devs",
+  jobTitle: "Frontend Engineer",
+  websiteUrl: "https://solodevs.id",
+  socialMedia: {
+    instagram: "@taufikhidayat",
+    linkedin: "linkedin.com/in/taufikhidayat",
+    twitter: "@taufikfe",
+  },
+  relationship: "Colleague",
+  notes: "React specialist",
+  group: "Work",
+  tags: ["react", "solo", "frontend"],
+  isFavorite: false,
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
+};
+
+addContact(newContactData);
+displayContacts(dataContacts);
+renderSeparatorLine();
+
+const newContactDataOnId3 = {
+  email: "budi.santoso123@yahoo.com",
+  phone: "081999888777",
+  jobTitle: "Senior Backend Developer",
+  tags: ["backend", "surabaya", "legacy", "senior"],
+  isFavorite: true,
+};
 
 // 3, Budi Santoso
-editContact(3, updateDataContactOnId3);
+editContact(3, newContactDataOnId3);
 displayContacts(dataContacts);
-console.log(dataContacts);
-console.log("-------------------------------------------------------------------------------------------------------");
+renderSeparatorLine();
 
 // 5, Dedi Pratama
 removeContact(5);
 displayContacts(dataContacts);
-console.log(dataContacts);
-console.log("-------------------------------------------------------------------------------------------------------");
+renderSeparatorLine();
