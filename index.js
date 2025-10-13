@@ -7,7 +7,7 @@ const dataContacts = [
     phone: "081434567890",
     socialMedia: {
       instagram: "@yogaprasetyo",
-      linkedin: "linkedin.com/in/yogaprasetyo",
+      linkedin: "yogaprasetyo",
       twitter: "@yogacyber",
     },
     relationship: "Colleague",
@@ -15,8 +15,8 @@ const dataContacts = [
     group: "Work",
     tags: ["developer", "jakarta", "backend"],
     isFavorite: true,
-    createdAt: "2025-10-11T09:00:00Z",
-    updatedAt: "2025-10-11T10:30:00Z",
+    createdAt: new Date().toISOString(),
+    updatedAt: "",
     address: {
       street: "Jl. Merdeka No. 10",
       rt: "005",
@@ -31,7 +31,7 @@ const dataContacts = [
     birthday: "1990-10-11",
     company: "Borneo Tech",
     jobTitle: "Cybersecurity Analyst",
-    website: "https://borneotech.id",
+    websiteUrl: "https://borneotech.id",
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ const dataContacts = [
     phone: "081345678901",
     socialMedia: {
       instagram: "@siti.design",
-      linkedin: "linkedin.com/in/sitiramadhani",
+      linkedin: "sitiramadhani",
       twitter: "@sitirama",
     },
     relationship: "Friend",
@@ -49,8 +49,8 @@ const dataContacts = [
     group: "Design",
     tags: ["uiux", "bandung", "creative"],
     isFavorite: false,
-    createdAt: "2025-09-20T08:15:00Z",
-    updatedAt: "2025-10-01T14:00:00Z",
+    createdAt: new Date().toISOString(),
+    updatedAt: "",
     address: {
       street: "Jl. Braga No. 22",
       rt: "002",
@@ -65,7 +65,7 @@ const dataContacts = [
     birthday: "1992-04-05",
     company: "Kreatif Studio",
     jobTitle: "UI/UX Designer",
-    website: "https://kreatifstudio.id",
+    websiteUrl: "https://kreatifstudio.id",
   },
   {
     id: 3,
@@ -75,7 +75,7 @@ const dataContacts = [
     phone: "081356789012",
     socialMedia: {
       instagram: "@budisantoso.dev",
-      linkedin: "linkedin.com/in/budisantoso",
+      linkedin: "budisantoso",
       twitter: "@budiscode",
     },
     relationship: "Client",
@@ -83,8 +83,8 @@ const dataContacts = [
     group: "Tech",
     tags: ["legacy", "surabaya", "backend"],
     isFavorite: false,
-    createdAt: "2025-08-15T10:00:00Z",
-    updatedAt: "2025-09-10T11:30:00Z",
+    createdAt: new Date().toISOString(),
+    updatedAt: "",
     address: {
       street: "Jl. Pemuda No. 5",
       rt: "004",
@@ -99,7 +99,7 @@ const dataContacts = [
     birthday: "1988-07-19",
     company: "Inovasi Digital",
     jobTitle: "Backend Developer",
-    website: "https://inovasidigital.id",
+    websiteUrl: "https://inovasidigital.id",
   },
   {
     id: 4,
@@ -109,7 +109,7 @@ const dataContacts = [
     phone: "081367890123",
     socialMedia: {
       instagram: "@rinakartika",
-      linkedin: "linkedin.com/in/rinakartika",
+      linkedin: "rinakartika",
       twitter: "@rinafrontend",
     },
     relationship: "Colleague",
@@ -117,8 +117,8 @@ const dataContacts = [
     group: "Work",
     tags: ["frontend", "yogyakarta", "react"],
     isFavorite: true,
-    createdAt: "2025-07-10T09:45:00Z",
-    updatedAt: "2025-09-01T13:20:00Z",
+    createdAt: new Date().toISOString(),
+    updatedAt: "",
     address: {
       street: "Jl. Malioboro No. 8",
       rt: "006",
@@ -133,7 +133,7 @@ const dataContacts = [
     birthday: "1993-03-22",
     company: "Jogja Web",
     jobTitle: "Frontend Developer",
-    website: "https://jogjaweb.id",
+    websiteUrl: "https://jogjaweb.id",
   },
   {
     id: 5,
@@ -143,7 +143,7 @@ const dataContacts = [
     phone: "081378901234",
     socialMedia: {
       instagram: "@dedipratama",
-      linkedin: "linkedin.com/in/dedipratama",
+      linkedin: "dedipratama",
       twitter: "@dedidevops",
     },
     relationship: "Partner",
@@ -151,8 +151,8 @@ const dataContacts = [
     group: "Infrastructure",
     tags: ["devops", "medan", "cloud"],
     isFavorite: false,
-    createdAt: "2025-06-01T08:00:00Z",
-    updatedAt: "2025-08-20T09:30:00Z",
+    createdAt: new Date().toISOString(),
+    updatedAt: "",
     address: {
       street: "Jl. Gatot Subroto No. 3",
       rt: "003",
@@ -167,7 +167,7 @@ const dataContacts = [
     birthday: "1987-09-05",
     company: "Solusi Cerdas",
     jobTitle: "DevOps Engineer",
-    website: "https://solusicerdas.id",
+    websiteUrl: "https://solusicerdas.id",
   },
   {
     id: 6,
@@ -177,7 +177,7 @@ const dataContacts = [
     phone: "081389012345",
     socialMedia: {
       instagram: "@lestari.ai",
-      linkedin: "linkedin.com/in/lestariwulandari",
+      linkedin: "lestariwulandari",
       twitter: "@tariwulan",
     },
     relationship: "Mentor",
@@ -185,8 +185,8 @@ const dataContacts = [
     group: "Academia",
     tags: ["ai", "semarang", "research"],
     isFavorite: true,
-    createdAt: "2025-05-12T07:30:00Z",
-    updatedAt: "2025-09-15T12:00:00Z",
+    createdAt: new Date().toISOString(),
+    updatedAt: "",
     address: {
       street: "Jl. Pandanaran No. 15",
       rt: "001",
@@ -201,7 +201,7 @@ const dataContacts = [
     birthday: "1993-02-14",
     company: "Digital Kreatif",
     jobTitle: "AI Researcher",
-    website: "https://digitalkreatif.co.id",
+    websiteUrl: "https://digitalkreatif.co.id",
   },
   {
     id: 7,
@@ -211,7 +211,7 @@ const dataContacts = [
     phone: "081390123456",
     socialMedia: {
       instagram: "@andiwijaya",
-      linkedin: "linkedin.com/in/andiwijaya",
+      linkedin: "andiwijaya",
       twitter: "@andi_fullstack",
     },
     relationship: "Colleague",
@@ -219,8 +219,8 @@ const dataContacts = [
     group: "Work",
     tags: ["fullstack", "makassar", "nodejs"],
     isFavorite: false,
-    createdAt: "2025-04-01T10:00:00Z",
-    updatedAt: "2025-08-01T11:00:00Z",
+    createdAt: new Date().toISOString(),
+    updatedAt: "",
     address: {
       street: "Jl. Ahmad Yani No. 9",
       rt: "007",
@@ -235,7 +235,7 @@ const dataContacts = [
     birthday: "1991-06-22",
     company: "Makassar Tech",
     jobTitle: "Fullstack Developer",
-    website: "https://makassartech.id",
+    websiteUrl: "https://makassartech.id",
   },
   {
     id: 9,
@@ -245,7 +245,7 @@ const dataContacts = [
     phone: "081412345678",
     socialMedia: {
       instagram: "@hendra.mobile",
-      linkedin: "linkedin.com/in/hendrasaputra",
+      linkedin: "hendrasaputra",
       twitter: "@hendrasoft",
     },
     relationship: "Colleague",
@@ -253,8 +253,8 @@ const dataContacts = [
     group: "Work",
     tags: ["mobile", "denpasar", "flutter"],
     isFavorite: false,
-    createdAt: "2025-03-15T09:00:00Z",
-    updatedAt: "2025-09-10T10:00:00Z",
+    createdAt: new Date().toISOString(),
+    updatedAt: "",
     address: {
       street: "Jl. Teuku Umar No. 6",
       rt: "002",
@@ -269,7 +269,7 @@ const dataContacts = [
     birthday: "1989-08-18",
     company: "Bali Tech",
     jobTitle: "Mobile Developer",
-    website: "https://balitech.id",
+    websiteUrl: "https://balitech.id",
   },
   {
     id: 10,
@@ -279,7 +279,7 @@ const dataContacts = [
     phone: "081423456789",
     socialMedia: {
       instagram: "@nadia.data",
-      linkedin: "linkedin.com/in/nadiapermata",
+      linkedin: "nadiapermata",
       twitter: "@nadia_analytics",
     },
     relationship: "Friend",
@@ -287,8 +287,8 @@ const dataContacts = [
     group: "Analytics",
     tags: ["data", "malang", "python"],
     isFavorite: true,
-    createdAt: "2025-02-10T08:30:00Z",
-    updatedAt: "2025-09-25T09:45:00Z",
+    createdAt: new Date().toISOString(),
+    updatedAt: "",
     address: {
       street: "Jl. Hasanuddin No. 4",
       rt: "003",
@@ -303,7 +303,7 @@ const dataContacts = [
     birthday: "1996-04-09",
     company: "Malang Kreatif",
     jobTitle: "Data Analyst",
-    website: "https://malangkreatif.co.id",
+    websiteUrl: "https://malangkreatif.co.id",
   },
   {
     id: 11,
@@ -313,7 +313,7 @@ const dataContacts = [
     phone: "081434567891",
     socialMedia: {
       instagram: "@rizkymaulana",
-      linkedin: "linkedin.com/in/rizkymaulana",
+      linkedin: "rizkymaulana",
       twitter: "@rizkycode",
     },
     relationship: "Client",
@@ -321,8 +321,8 @@ const dataContacts = [
     group: "Blockchain",
     tags: ["blockchain", "samarinda", "solidity"],
     isFavorite: false,
-    createdAt: "2025-01-05T07:00:00Z",
-    updatedAt: "2025-09-30T11:15:00Z",
+    createdAt: new Date().toISOString(),
+    updatedAt: "",
     address: {
       street: "Jl. Pangeran Antasari No. 12",
       rt: "006",
@@ -337,11 +337,11 @@ const dataContacts = [
     birthday: "1995-12-15",
     company: "Crypto Nusantara",
     jobTitle: "Blockchain Developer",
-    website: "https://cryptonusantara.id",
+    websiteUrl: "https://cryptonusantara.id",
   },
 ];
 
-const newDatacontacts = {
+const newContactData = {
   name: "Taufik Hidayat",
   nickname: "Taufik",
   email: "taufik.hidayat@example.com",
@@ -360,10 +360,10 @@ const newDatacontacts = {
   birthday: "1992-08-10",
   company: "Solo Devs",
   jobTitle: "Frontend Engineer",
-  website: "https://solodevs.id",
+  websiteUrl: "https://solodevs.id",
   socialMedia: {
     instagram: "@taufikhidayat",
-    linkedin: "linkedin.com/in/taufikhidayat",
+    linkedin: "taufikhidayat",
     twitter: "@taufikfe",
   },
   relationship: "Colleague",
@@ -375,7 +375,7 @@ const newDatacontacts = {
   updatedAt: new Date().toISOString(),
 };
 
-const updateDataContactOnId3 = {
+const newContactDataOnId3 = {
   email: "budi.santoso123@yahoo.com",
   phone: "081999888777",
   jobTitle: "Senior Backend Developer",
@@ -391,7 +391,7 @@ function displayContacts(contacts) {
   }
 }
 
-function pushContact(newContact) {
+function addContact(newContact) {
   const lastId = dataContacts.length > 0 ? dataContacts[dataContacts.length - 1].id : 0;
   newContact.id = lastId + 1;
 
@@ -421,7 +421,7 @@ function editContact(id, updatedFields) {
     updatedAt: new Date().toISOString(),
   };
 
-  console.log(`✅ Contact "${dataContacts[index].name}" updated successfully.`);
+  console.log(`✅ Contact "${dataContacts[index].name}" edited successfully.`);
 }
 
 function removeContact(id) {
@@ -436,23 +436,23 @@ function removeContact(id) {
   console.log(`🗑️ Contact "${removed.name}" removed successfully.`);
 }
 
-console.log(dataContacts);
-displayContacts(dataContacts);
-console.log("-------------------------------------------------------------------------------------------------------");
+function renderSeparatorLine() {
+  console.log("-------------------------------------------------------------------------------------------------------");
+}
 
-pushContact(newDatacontacts);
 displayContacts(dataContacts);
-console.log(dataContacts);
-console.log("-------------------------------------------------------------------------------------------------------");
+renderSeparatorLine();
+
+addContact(newContactData);
+displayContacts(dataContacts);
+renderSeparatorLine();
 
 // 3, Budi Santoso
-editContact(3, updateDataContactOnId3);
+editContact(3, newContactDataOnId3);
 displayContacts(dataContacts);
-console.log(dataContacts);
-console.log("-------------------------------------------------------------------------------------------------------");
+renderSeparatorLine();
 
 // 5, Dedi Pratama
 removeContact(5);
 displayContacts(dataContacts);
-console.log(dataContacts);
-console.log("-------------------------------------------------------------------------------------------------------");
+renderSeparatorLine();
