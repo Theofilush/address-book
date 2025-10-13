@@ -1,4 +1,4 @@
-const dataContacts = [
+let dataContacts = [
   {
     id: 1,
     name: "Yoga Prasetyo",
@@ -387,57 +387,46 @@ function displayContacts(contacts) {
   for (let index = 0; index < contacts.length; index++) {
     const contact = contacts[index];
 
-    console.log(`👤 ${contact.name} | 📧 ${contact.email} | 📱 ${contact.phone}`);
+    console.log(
+      `👤 ${contact.name} | 📧 ${contact.email} | 📱 ${contact.phone}`
+    );
   }
 }
 
 function addContact(newContact) {
-  const lastId = dataContacts.length > 0 ? dataContacts[dataContacts.length - 1].id : 0;
-  newContact.id = lastId + 1;
+  const newId =
+    dataContacts.length > 0 ? dataContacts[dataContacts.length - 1].id + 1 : 0;
 
   const requiredFields = ["name", "email", "phone"];
+
   for (const field of requiredFields) {
     if (!newContact[field]) {
       console.warn(`Missing required field: ${field}`);
       return;
     }
   }
+  const newContactData = {
+    id: newId,
+    ...newContact,
+  };
 
-  dataContacts.push(newContact);
-  console.log(`✅ Contact "${newContact.name}" added successfully.`);
+  dataContacts = [...dataContacts, newContactData];
+
+  console.log(`✅ Contact "${newContactData.name}" added successfully.`);
 }
 
 function editContact(id, updatedFields) {
-  const index = dataContacts.findIndex((contact) => contact.id === id);
-
-  if (index === -1) {
-    console.warn(`❌ Contact with ID ${id} not found.`);
-    return;
-  }
-
-  dataContacts[index] = {
-    ...dataContacts[index],
-    ...updatedFields,
-    updatedAt: new Date().toISOString(),
-  };
-
-  console.log(`✅ Contact "${dataContacts[index].name}" edited successfully.`);
+  // TODO: Implement again
 }
 
 function removeContact(id) {
-  const index = dataContacts.findIndex((contact) => contact.id === id);
-
-  if (index === -1) {
-    console.warn(`❌ Contact with ID ${id} not found.`);
-    return;
-  }
-
-  const removed = dataContacts.splice(index, 1)[0];
-  console.log(`🗑️ Contact "${removed.name}" removed successfully.`);
+  // TODO: Implement again
 }
 
 function renderSeparatorLine() {
-  console.log("-------------------------------------------------------------------------------------------------------");
+  console.log(
+    "-------------------------------------------------------------------------------------------------------"
+  );
 }
 
 displayContacts(dataContacts);
