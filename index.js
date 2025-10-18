@@ -15,8 +15,8 @@ let dataContacts = [
     group: "Work",
     tags: ["developer", "jakarta", "backend"],
     isFavorite: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
     address: {
       street: "Jl. Merdeka No. 10",
       rt: "005",
@@ -28,7 +28,7 @@ let dataContacts = [
       postalCode: "10510",
       country: "Indonesia",
     },
-    birthday: "1990-10-11",
+    birthday: new Date("1990-10-11"),
     company: "Borneo Tech",
     jobTitle: "Cybersecurity Analyst",
     websiteUrl: "https://borneotech.id",
@@ -49,8 +49,8 @@ let dataContacts = [
     group: "Design",
     tags: ["uiux", "bandung", "creative"],
     isFavorite: false,
-    createdAt: new Date().toISOString(),
-    updatedAt: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
     address: {
       street: "Jl. Braga No. 22",
       rt: "002",
@@ -62,7 +62,7 @@ let dataContacts = [
       postalCode: "40111",
       country: "Indonesia",
     },
-    birthday: "1992-04-05",
+    birthday: new Date("1992-04-05"),
     company: "Kreatif Studio",
     jobTitle: "UI/UX Designer",
     websiteUrl: "https://kreatifstudio.id",
@@ -83,8 +83,8 @@ let dataContacts = [
     group: "Tech",
     tags: ["legacy", "surabaya", "backend"],
     isFavorite: false,
-    createdAt: new Date().toISOString(),
-    updatedAt: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
     address: {
       street: "Jl. Pemuda No. 5",
       rt: "004",
@@ -96,7 +96,7 @@ let dataContacts = [
       postalCode: "60275",
       country: "Indonesia",
     },
-    birthday: "1988-07-19",
+    birthday: new Date("1988-07-19"),
     company: "Inovasi Digital",
     jobTitle: "Backend Developer",
     websiteUrl: "https://inovasidigital.id",
@@ -117,8 +117,8 @@ let dataContacts = [
     group: "Work",
     tags: ["frontend", "yogyakarta", "react"],
     isFavorite: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
     address: {
       street: "Jl. Malioboro No. 8",
       rt: "006",
@@ -130,7 +130,7 @@ let dataContacts = [
       postalCode: "55271",
       country: "Indonesia",
     },
-    birthday: "1993-03-22",
+    birthday: new Date("1993-03-22"),
     company: "Jogja Web",
     jobTitle: "Frontend Developer",
     websiteUrl: "https://jogjaweb.id",
@@ -151,8 +151,8 @@ let dataContacts = [
     group: "Infrastructure",
     tags: ["devops", "medan", "cloud"],
     isFavorite: false,
-    createdAt: new Date().toISOString(),
-    updatedAt: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
     address: {
       street: "Jl. Gatot Subroto No. 3",
       rt: "003",
@@ -164,7 +164,7 @@ let dataContacts = [
       postalCode: "20111",
       country: "Indonesia",
     },
-    birthday: "1987-09-05",
+    birthday: new Date("1987-09-05"),
     company: "Solusi Cerdas",
     jobTitle: "DevOps Engineer",
     websiteUrl: "https://solusicerdas.id",
@@ -185,8 +185,8 @@ let dataContacts = [
     group: "Academia",
     tags: ["ai", "semarang", "research"],
     isFavorite: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
     address: {
       street: "Jl. Pandanaran No. 15",
       rt: "001",
@@ -198,7 +198,7 @@ let dataContacts = [
       postalCode: "50249",
       country: "Indonesia",
     },
-    birthday: "1993-02-14",
+    birthday: new Date("1993-02-14"),
     company: "Digital Kreatif",
     jobTitle: "AI Researcher",
     websiteUrl: "https://digitalkreatif.co.id",
@@ -219,8 +219,8 @@ let dataContacts = [
     group: "Work",
     tags: ["fullstack", "makassar", "nodejs"],
     isFavorite: false,
-    createdAt: new Date().toISOString(),
-    updatedAt: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
     address: {
       street: "Jl. Ahmad Yani No. 9",
       rt: "007",
@@ -232,7 +232,7 @@ let dataContacts = [
       postalCode: "90123",
       country: "Indonesia",
     },
-    birthday: "1991-06-22",
+    birthday: new Date("1991-06-22"),
     company: "Makassar Tech",
     jobTitle: "Fullstack Developer",
     websiteUrl: "https://makassartech.id",
@@ -253,8 +253,8 @@ let dataContacts = [
     group: "Work",
     tags: ["mobile", "denpasar", "flutter"],
     isFavorite: false,
-    createdAt: new Date().toISOString(),
-    updatedAt: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
     address: {
       street: "Jl. Teuku Umar No. 6",
       rt: "002",
@@ -266,7 +266,7 @@ let dataContacts = [
       postalCode: "80117",
       country: "Indonesia",
     },
-    birthday: "1989-08-18",
+    birthday: new Date("1989-08-18"),
     company: "Bali Tech",
     jobTitle: "Mobile Developer",
     websiteUrl: "https://balitech.id",
@@ -287,8 +287,8 @@ let dataContacts = [
     group: "Analytics",
     tags: ["data", "malang", "python"],
     isFavorite: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
     address: {
       street: "Jl. Hasanuddin No. 4",
       rt: "003",
@@ -300,7 +300,7 @@ let dataContacts = [
       postalCode: "65111",
       country: "Indonesia",
     },
-    birthday: "1996-04-09",
+    birthday: new Date("1996-04-09"),
     company: "Malang Kreatif",
     jobTitle: "Data Analyst",
     websiteUrl: "https://malangkreatif.co.id",
@@ -321,8 +321,8 @@ let dataContacts = [
     group: "Blockchain",
     tags: ["blockchain", "samarinda", "solidity"],
     isFavorite: false,
-    createdAt: new Date().toISOString(),
-    updatedAt: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
     address: {
       street: "Jl. Pangeran Antasari No. 12",
       rt: "006",
@@ -334,12 +334,71 @@ let dataContacts = [
       postalCode: "75117",
       country: "Indonesia",
     },
-    birthday: "1995-12-15",
+    birthday: new Date("1995-12-15"),
     company: "Crypto Nusantara",
     jobTitle: "Blockchain Developer",
     websiteUrl: "https://cryptonusantara.id",
   },
 ];
+
+function displayContacts(contacts) {
+  console.log(`Display Contacts:`);
+  contacts.forEach((contacts) => renderContact(contacts));
+}
+
+function renderContact(contact) {
+  console.log(`
+    👤 ${contact.name}
+    📧 ${contact.email}
+    📱 ${contact.phone}
+
+    // TODO: Continue here
+
+    `);
+}
+
+function addContact(contacts, newContactData) {
+  const newId = dataContacts[dataContacts.length - 1].id + 1;
+
+  const contact = {
+    id: newId,
+    ...newContactData,
+  };
+
+  const updatedContacts = [...contacts, contact];
+
+  dataContacts = updatedContacts;
+
+  console.log(`✅ Contact "${newContact.name}" added successfully.`);
+}
+
+function editContact(id, contacts, updatedFields) {
+  //  TODO: Use map only
+
+  dataContacts = updatedContacts;
+
+  console.log(`✅ Contact "${selectEditedContact.name}" edited successfully.`);
+}
+
+function removeContact(contacts, id) {
+  const updatedContacts = contacts.filter((contact) => {
+    if (contact.id !== id) {
+      return contact;
+    } else {
+      console.log(`✅ Contact "${contact.name}" removed successfully.`);
+    }
+  });
+
+  dataContacts = updatedContacts;
+}
+
+function renderSeparatorLine() {
+  console.log(
+    "-------------------------------------------------------------------------------------------------------"
+  );
+}
+
+// -------------------------------------------------------
 
 const newContactData = {
   name: "Taufik Hidayat",
@@ -357,7 +416,7 @@ const newContactData = {
     postalCode: "57126",
     country: "Indonesia",
   },
-  birthday: "1992-08-10",
+  birthday: new Date("1992-08-10"),
   company: "Solo Devs",
   jobTitle: "Frontend Engineer",
   websiteUrl: "https://solodevs.id",
@@ -371,8 +430,8 @@ const newContactData = {
   group: "Work",
   tags: ["react", "solo", "frontend"],
   isFavorite: false,
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
+  createdAt: new Date(),
+  updatedAt: new Date(),
 };
 
 const newContactDataOnId3 = {
@@ -390,62 +449,6 @@ const newContactDataOnId4 = {
   tags: ["frontEnd", "Solo", "legacy", "senior"],
   isFavorite: false,
 };
-
-function displayContacts(contacts) {
-  console.log(`Display Contacts:`);
-  contacts.forEach((contacts) => renderContact(contacts));
-}
-
-function renderContact(contact) {
-  console.log(`👤 ${contact.name} | 📧 ${contact.email} | 📱 ${contact.phone}`);
-}
-
-function addContact(contacts, newContact) {
-  const newId = dataContacts[dataContacts.length - 1].id + 1;
-  newContact.id = newId;
-
-  const updatedContacts = [...contacts, newContact];
-  dataContacts = updatedContacts;
-
-  console.log(`✅ Contact "${newContact.name}" added successfully.`);
-}
-
-function editContact2(id, updatedFields) {
-  const index = dataContacts.findIndex((contact) => contact.id === id);
-
-  dataContacts[index] = {
-    ...dataContacts[index],
-    ...updatedFields,
-    updatedAt: new Date().toISOString(),
-  };
-
-  console.log(`✅ Contact "${dataContacts[index].name}" edited successfully.`);
-}
-
-function editContact(id, contacts, updatedFields) {
-  const newDataContacts = contacts.filter((contact) => contact.id !== id);
-  const selectEditedContact = dataContacts.find((contact) => contact.id === id);
-
-  const editedContact = {
-    ...selectEditedContact,
-    ...updatedFields,
-  };
-  const updatedContacts = [...newDataContacts, editedContact];
-  dataContacts = updatedContacts;
-
-  console.log(`✅ Contact "${selectEditedContact.name}" edited successfully.`);
-}
-
-function removeContact(contacts, id) {
-  const updatedContacts = contacts.filter((contact) => contact.id !== id);
-  const removedNameContact = contacts[id - 1].name;
-  dataContacts = updatedContacts;
-  console.log(`✅ Contact "${removedNameContact}" removed successfully.`);
-}
-
-function renderSeparatorLine() {
-  console.log("-------------------------------------------------------------------------------------------------------");
-}
 
 displayContacts(dataContacts);
 renderSeparatorLine();
