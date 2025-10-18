@@ -1,4 +1,4 @@
-const dataContacts = [
+let dataContacts = [
   {
     id: 1,
     name: "Yoga Prasetyo",
@@ -383,57 +383,66 @@ const newContactDataOnId3 = {
   isFavorite: true,
 };
 
-function displayContacts(contacts) {
-  for (let index = 0; index < contacts.length; index++) {
-    const contact = contacts[index];
+const newContactDataOnId4 = {
+  email: "rina-kartika456@yahoo.com",
+  phone: "081122223333",
+  jobTitle: "Senior Frontend Developer",
+  tags: ["frontEnd", "Solo", "legacy", "senior"],
+  isFavorite: false,
+};
 
-    console.log(`👤 ${contact.name} | 📧 ${contact.email} | 📱 ${contact.phone}`);
-  }
+function displayContacts(contacts) {
+  console.log(`Display Contacts:`);
+  contacts.forEach((contacts) => renderContact(contacts));
 }
 
-function addContact(newContact) {
-  const lastId = dataContacts.length > 0 ? dataContacts[dataContacts.length - 1].id : 0;
-  newContact.id = lastId + 1;
+function renderContact(contact) {
+  console.log(`👤 ${contact.name} | 📧 ${contact.email} | 📱 ${contact.phone}`);
+}
 
-  const requiredFields = ["name", "email", "phone"];
-  for (const field of requiredFields) {
-    if (!newContact[field]) {
-      console.warn(`Missing required field: ${field}`);
-      return;
-    }
-  }
+function addContact(contacts, newContact) {
+  const newId = dataContacts[dataContacts.length - 1].id + 1;
+  newContact.id = newId;
 
-  dataContacts.push(newContact);
+  const updatedContacts = [...contacts, newContact];
+  dataContacts = updatedContacts;
+
   console.log(`✅ Contact "${newContact.name}" added successfully.`);
 }
 
-function editContact(id, updatedFields) {
+function editContact2(id, updatedFields) {
   const index = dataContacts.findIndex((contact) => contact.id === id);
-
-  if (index === -1) {
-    console.warn(`❌ Contact with ID ${id} not found.`);
-    return;
-  }
 
   dataContacts[index] = {
     ...dataContacts[index],
     ...updatedFields,
     updatedAt: new Date().toISOString(),
   };
-
+  // console.log(`abcd `);
   console.log(`✅ Contact "${dataContacts[index].name}" edited successfully.`);
 }
 
-function removeContact(id) {
-  const index = dataContacts.findIndex((contact) => contact.id === id);
+function editContact(id, contacts, updatedFields) {
+  const newDataContacts = contacts.filter((contact) => contact.id !== id);
+  const selectEditedContact = dataContacts.find((contact) => contact.id === id);
 
-  if (index === -1) {
-    console.warn(`❌ Contact with ID ${id} not found.`);
-    return;
-  }
+  const editedContacts = {
+    ...selectEditedContact,
+    ...updatedFields,
+  };
+  const updatedContacts = [...newDataContacts, editedContacts];
+  dataContacts = updatedContacts;
 
-  const removed = dataContacts.splice(index, 1)[0];
-  console.log(`🗑️ Contact "${removed.name}" removed successfully.`);
+  // dataContacts = updatedContacts;
+  console.log(editedContacts);
+  console.log(`✅ Contact "${selectEditedContact.name}" edited successfully.`);
+}
+
+function removeContact(contacts, id) {
+  const updatedContacts = contacts.filter((contact) => contact.id !== id);
+  const removedNameContact = contacts[id - 1].name;
+  dataContacts = updatedContacts;
+  console.log(`✅ Contact "${removedNameContact}" removed successfully.`);
 }
 
 function renderSeparatorLine() {
@@ -443,16 +452,21 @@ function renderSeparatorLine() {
 displayContacts(dataContacts);
 renderSeparatorLine();
 
-addContact(newContactData);
+addContact(dataContacts, newContactData);
 displayContacts(dataContacts);
 renderSeparatorLine();
 
 // 3, Budi Santoso
-editContact(3, newContactDataOnId3);
+editContact(3, dataContacts, newContactDataOnId3);
+displayContacts(dataContacts);
+renderSeparatorLine();
+
+// 4, Rina Kartika
+editContact2(4, newContactDataOnId4);
 displayContacts(dataContacts);
 renderSeparatorLine();
 
 // 5, Dedi Pratama
-removeContact(5);
+removeContact(dataContacts, 5);
 displayContacts(dataContacts);
 renderSeparatorLine();
