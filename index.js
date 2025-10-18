@@ -418,7 +418,7 @@ function editContact2(id, updatedFields) {
     ...updatedFields,
     updatedAt: new Date().toISOString(),
   };
-  // console.log(`abcd `);
+
   console.log(`✅ Contact "${dataContacts[index].name}" edited successfully.`);
 }
 
@@ -426,15 +426,13 @@ function editContact(id, contacts, updatedFields) {
   const newDataContacts = contacts.filter((contact) => contact.id !== id);
   const selectEditedContact = dataContacts.find((contact) => contact.id === id);
 
-  const editedContacts = {
+  const editedContact = {
     ...selectEditedContact,
     ...updatedFields,
   };
-  const updatedContacts = [...newDataContacts, editedContacts];
+  const updatedContacts = [...newDataContacts, editedContact];
   dataContacts = updatedContacts;
 
-  // dataContacts = updatedContacts;
-  console.log(editedContacts);
   console.log(`✅ Contact "${selectEditedContact.name}" edited successfully.`);
 }
 
