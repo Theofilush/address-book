@@ -468,3 +468,36 @@ renderSeparatorLine();
 removeContact(dataContacts, 5);
 displayContacts(dataContacts);
 renderSeparatorLine();
+
+//--------------------------
+
+function displayContactsV2(contacts) {
+  const container = document.getElementById("output");
+  container.innerHTML = "";
+
+  contacts.forEach((contact) => {
+    const contactElement = renderContactV2(contact);
+    container.appendChild(contactElement);
+  });
+}
+
+function renderContactV2(contact) {
+  const div = document.createElement("div");
+  div.className = "contact-card";
+  div.innerHTML = `
+    <p>👤 <strong>${contact.name}</strong></p>
+    <p>📧 ${contact.email}</p>
+    <p>📱 ${contact.phone}</p>
+    <hr>
+  `;
+  return div;
+}
+
+function display() {
+  const data = ["Apel", "Mangga", "Jeruk"];
+  const output = document.getElementById("output");
+
+  output.innerHTML = "<ul>" + data.map((item) => `<li>${item}</li>`).join("") + "</ul>";
+}
+// document.addEventListener("DOMContentLoaded", display);
+window.onload = () => displayContactsV2(dataContacts);
