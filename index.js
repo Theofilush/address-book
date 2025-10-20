@@ -341,63 +341,29 @@ let dataContacts = [
   },
 ];
 
-const newContactData = {
-  name: "Taufik Hidayat",
-  nickname: "Taufik",
-  email: "taufik.hidayat@example.com",
-  phone: "081456789012",
-  address: {
-    street: "Jl. Slamet Riyadi No. 9",
-    rt: "004",
-    rw: "002",
-    subdistrict: "Purwodiningratan",
-    district: "Jebres",
-    city: "Solo",
-    province: "Jawa Tengah",
-    postalCode: "57126",
-    country: "Indonesia",
-  },
-  birthday: "1992-08-10",
-  company: "Solo Devs",
-  jobTitle: "Frontend Engineer",
-  websiteUrl: "https://solodevs.id",
-  socialMedia: {
-    instagram: "@taufikhidayat",
-    linkedin: "taufikhidayat",
-    twitter: "@taufikfe",
-  },
-  relationship: "Colleague",
-  notes: "React specialist",
-  group: "Work",
-  tags: ["react", "solo", "frontend"],
-  isFavorite: false,
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
-};
+function renderContacts(contacts) {
+  const contactsContainerElement =
+    document.getElementById("contacts-container");
+  contactsContainerElement.innerHTML = "";
 
-const newContactDataOnId3 = {
-  email: "budi.santoso123@yahoo.com",
-  phone: "081999888777",
-  jobTitle: "Senior Backend Developer",
-  tags: ["backend", "surabaya", "legacy", "senior"],
-  isFavorite: true,
-};
-
-const newContactDataOnId4 = {
-  email: "rina-kartika456@yahoo.com",
-  phone: "081122223333",
-  jobTitle: "Senior Frontend Developer",
-  tags: ["frontEnd", "Solo", "legacy", "senior"],
-  isFavorite: false,
-};
-
-function displayContacts(contacts) {
-  console.log(`Display Contacts:`);
-  contacts.forEach((contacts) => renderContact(contacts));
+  contacts.forEach((contact) => {
+    const contactElement = renderContact(contact);
+    contactsContainerElement.appendChild(contactElement);
+  });
 }
 
 function renderContact(contact) {
-  console.log(`👤 ${contact.name} | 📧 ${contact.email} | 📱 ${contact.phone}`);
+  const contactDivElement = document.createElement("div");
+
+  contactDivElement.className = "contact-card";
+
+  contactDivElement.innerHTML = `
+  <p>👤 <strong>${contact.name}</strong></p>
+  <p>📧 ${contact.email}</p>
+  <p>📱 ${contact.phone}</p>
+  `;
+
+  return contactDivElement;
 }
 
 function addContact(contacts, newContact) {
@@ -410,7 +376,7 @@ function addContact(contacts, newContact) {
   console.log(`✅ Contact "${newContact.name}" added successfully.`);
 }
 
-function editContact2(id, updatedFields) {
+function editContact(id, updatedFields) {
   const index = dataContacts.findIndex((contact) => contact.id === id);
 
   dataContacts[index] = {
@@ -418,86 +384,12 @@ function editContact2(id, updatedFields) {
     ...updatedFields,
     updatedAt: new Date().toISOString(),
   };
-
-  console.log(`✅ Contact "${dataContacts[index].name}" edited successfully.`);
-}
-
-function editContact(id, contacts, updatedFields) {
-  const newDataContacts = contacts.filter((contact) => contact.id !== id);
-  const selectEditedContact = dataContacts.find((contact) => contact.id === id);
-
-  const editedContact = {
-    ...selectEditedContact,
-    ...updatedFields,
-  };
-  const updatedContacts = [...newDataContacts, editedContact];
-  dataContacts = updatedContacts;
-
-  console.log(`✅ Contact "${selectEditedContact.name}" edited successfully.`);
 }
 
 function removeContact(contacts, id) {
   const updatedContacts = contacts.filter((contact) => contact.id !== id);
   const removedNameContact = contacts[id - 1].name;
   dataContacts = updatedContacts;
-  console.log(`✅ Contact "${removedNameContact}" removed successfully.`);
 }
 
-function renderSeparatorLine() {
-  console.log("-------------------------------------------------------------------------------------------------------");
-}
-
-displayContacts(dataContacts);
-renderSeparatorLine();
-
-addContact(dataContacts, newContactData);
-displayContacts(dataContacts);
-renderSeparatorLine();
-
-// 3, Budi Santoso
-editContact(3, dataContacts, newContactDataOnId3);
-displayContacts(dataContacts);
-renderSeparatorLine();
-
-// 4, Rina Kartika
-editContact2(4, newContactDataOnId4);
-displayContacts(dataContacts);
-renderSeparatorLine();
-
-// 5, Dedi Pratama
-removeContact(dataContacts, 5);
-displayContacts(dataContacts);
-renderSeparatorLine();
-
-//--------------------------
-
-function displayContactsV2(contacts) {
-  const container = document.getElementById("output");
-  container.innerHTML = "";
-
-  contacts.forEach((contact) => {
-    const contactElement = renderContactV2(contact);
-    container.appendChild(contactElement);
-  });
-}
-
-function renderContactV2(contact) {
-  const div = document.createElement("div");
-  div.className = "contact-card";
-  div.innerHTML = `
-    <p>👤 <strong>${contact.name}</strong></p>
-    <p>📧 ${contact.email}</p>
-    <p>📱 ${contact.phone}</p>
-    <hr>
-  `;
-  return div;
-}
-
-function display() {
-  const data = ["Apel", "Mangga", "Jeruk"];
-  const output = document.getElementById("output");
-
-  output.innerHTML = "<ul>" + data.map((item) => `<li>${item}</li>`).join("") + "</ul>";
-}
-// document.addEventListener("DOMContentLoaded", display);
-window.onload = () => displayContactsV2(dataContacts);
+window.onload = () => renderContacts(dataContacts);
