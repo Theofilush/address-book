@@ -352,9 +352,7 @@ function renderContacts(contacts) {
 
   const filteredContacts = query ? searchContacts(contacts, query) : contacts;
 
-  appElement.innerHTML = `<ul id="contacts" class="space-y-4">
-    ${filteredContacts.map((contact) => renderContact(contact)).join("")}
-  </ul>`;
+  appElement.innerHTML = `${filteredContacts.map((contact) => renderContact(contact)).join("")}`;
 }
 
 function renderContact(contact) {
@@ -368,7 +366,7 @@ function renderContact(contact) {
               </div>
             </div>
             <div class="flex space-x-2">
-              <button id="openEditContactModalBtn" class="text-gray-400 hover:text-blue-500" title="Edit" onclick="editContact(dataContacts, ${contact.id})">
+              <button id="openEditContactModalBtn" class="text-gray-400 hover:text-blue-500" title="Edit" onclick="renderEditContactById(dataContacts, ${contact.id})">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.536L16.732 3.732z"></path>
                 </svg>
@@ -397,6 +395,38 @@ function deleteContact(contacts, id) {
   renderContacts(updatedContacts);
 }
 
+function renderEditContactById(contacts, id) {
+  const contact = contacts.find((contact) => contact.id === id);
+
+  document.getElementById("idEditContact").defaultValue = contact.id;
+  document.getElementById("nameEditContact").defaultValue = contact.name;
+  document.getElementById("emailEditContact").defaultValue = contact.email;
+  document.getElementById("phoneEditContact").defaultValue = contact.phone;
+
+  const appElement = document.getElementById("edit-contact-form");
+  appElement.innerHTML = `<div class="invisible">
+            <label for="idEditContact-${contact.id}" class="block text-sm font-medium text-gray-700">ID</label>
+            <input type="hidden" id="idEditContact-${contact.id}" name="idEditContact-${contact.id}" />
+          </div>
+          <div class="mb-4">
+            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+            <input type="text" id="nameEditContact-${contact.id}" name="nameEditContact-${contact.id}" class="w-full p-2 border border-gray-300 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" id="emailEditContact-${contact.id}" name="emailEditContact-${contact.id}" class="w-full p-2 border border-gray-300 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div class="mb-4">
+            <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+            <input type="tel" id="phoneEditContact-${contact.id}" name="phoneEditContact-${contact.id}" class="w-full p-2 border border-gray-300 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          
+          <div class="flex justify-end space-x-3 mt-6">
+            <button type="button" id="closeEditContactModalBtn-${contact.id}" class="bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 transition">Cancel</button>
+            <button type="submit" id="submitEditContactModalBtn-${contact.id}" class="bg-amber-700 text-white font-semibold py-2 px-4 rounded-lg hover:bg-amber-800 transition">Save</button>
+          </div>`;
+}
+
 function addContact(contacts, { name = null, email = null, phone = null }) {
   const newId = contacts.length > 0 ? contacts[contacts.length - 1].id + 1 : 1;
   const newContact = {
@@ -412,27 +442,6 @@ function addContact(contacts, { name = null, email = null, phone = null }) {
   renderContacts(updatedContacts);
 }
 
-function editContact(contacts, id) {
-  const contact = contacts.find((contact) => contact.id === id);
-
-  document.getElementById("name").value = contact.name;
-  document.getElementById("email").value = contact.email;
-  document.getElementById("phone").value = contact.phone;
-
-  // const updatedContacts = contacts.map((contact) => {
-  //   if (contact.id === id)
-  //     return {
-  //       ...contact,
-  //       fullName: fullName ?? contact.fullName,
-  //       phone: phone ?? contact.phone,
-  //       email: email ?? contact.email,
-  //     };
-  //   else return contact;
-  // });
-
-  // dataContacts = updatedContacts;
-}
-
 const addContactFormElement = document.getElementById("add-contact-form");
 addContactFormElement.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -446,6 +455,45 @@ addContactFormElement.addEventListener("submit", (event) => {
   };
 
   addContact(dataContacts, newContactData);
+});
+
+function editContact(contacts, id, newContact) {
+  const updatedContacts = contacts.map((contact) => {
+    if (contact.id === id) {
+      return {
+        ...contact,
+        name: newContact.name ?? contact.name,
+        phone: newContact.phone ?? contact.phone,
+        email: newContact.email ?? contact.email,
+      };
+    } else return contact;
+  });
+  dataContacts = updatedContacts;
+  console.log(dataContacts);
+  console.log(updatedContacts);
+  console.log(contacts);
+  console.log(id);
+  console.log(id);
+  console.log(newContact);
+  console.log(newContact.name);
+
+  renderContacts(updatedContacts);
+}
+
+const editContactFormElement = document.getElementById("edit-contact-form");
+editContactFormElement.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(editContactFormElement);
+  const idContact = formData.get("idEditContact");
+
+  const newContactData = {
+    name: formData.get("nameEditContact").toString(),
+    phone: formData.get("phoneEditContact").toString(),
+    email: formData.get("emailEditContact").toString(),
+  };
+
+  editContact(dataContacts, idContact, newContactData);
 });
 
 renderContacts(dataContacts);
