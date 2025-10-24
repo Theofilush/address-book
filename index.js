@@ -368,12 +368,12 @@ function renderContact(contact) {
               </div>
             </div>
             <div class="flex space-x-2">
-              <button id="openEditContactModalBtn" class="text-gray-400 hover:text-blue-500" title="Edit">
+              <button id="openEditContactModalBtn" class="text-gray-400 hover:text-blue-500" title="Edit" onclick="editContact(dataContacts, ${contact.id})">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.536L16.732 3.732z"></path>
                 </svg>
               </button>
-              <button class="text-gray-400 hover:text-red-500" title="Hapus" onclick="deleteContact(dataContacts, ${contact.id})">
+              <button class="text-gray-400 hover:text-red-500" title="Delete" onclick="deleteContact(dataContacts, ${contact.id})">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path
                     stroke-linecap="round"
@@ -410,6 +410,27 @@ function addContact(contacts, { name = null, email = null, phone = null }) {
   dataContacts = updatedContacts;
 
   renderContacts(updatedContacts);
+}
+
+function editContact(contacts, id) {
+  const contact = contacts.find((contact) => contact.id === id);
+
+  document.getElementById("name").value = contact.name;
+  document.getElementById("email").value = contact.email;
+  document.getElementById("phone").value = contact.phone;
+
+  // const updatedContacts = contacts.map((contact) => {
+  //   if (contact.id === id)
+  //     return {
+  //       ...contact,
+  //       fullName: fullName ?? contact.fullName,
+  //       phone: phone ?? contact.phone,
+  //       email: email ?? contact.email,
+  //     };
+  //   else return contact;
+  // });
+
+  // dataContacts = updatedContacts;
 }
 
 const addContactFormElement = document.getElementById("add-contact-form");
