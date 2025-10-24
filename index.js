@@ -358,23 +358,73 @@ function renderContacts(contacts) {
 }
 
 function renderContact(contact) {
-  return `<li class="p-2 border border-black rounded flex justify-between">
-  <div>
-    <h2 class="font-bold text-lg">👤 ${contact.name}</h2>
-    <p>📞 ${contact.phone ?? "-"}</p>
-    <p>📧 ${contact.email ?? "-"}</p>
-  </div>
-  <div>
-    <button onclick="deleteContact(dataContacts, ${contact.id})"
-      class="bg-red-700 text-white text-xs px-1 py-0.5 rounded"
-    >
-      Delete
-    </button>
-  </div>
-  </li>`;
+  return `<li class="p-4 flex items-center justify-between hover:bg-gray-50 transition">
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-xl mr-4">AS</div>
+              <div>
+                <p class="font-semibold text-gray-900">${contact.name ?? "-"}</p>
+                <p class="text-sm text-gray-600">${contact.email ?? "-"}</p>
+                <p class="text-sm text-gray-500">${contact.phone ?? "-"}</p>
+              </div>
+            </div>
+            <div class="flex space-x-2">
+              <button class="text-gray-400 hover:text-blue-500" title="Edit">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.536L16.732 3.732z"></path>
+                </svg>
+              </button>
+              <button class="text-gray-400 hover:text-red-500" title="Hapus" onclick="deleteContact(dataContacts, ${contact.id})">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                </svg>
+              </button>
+            </div>
+          </li>`;
 }
 function searchContacts(contacts, keyword) {
   const foundContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(keyword.toLowerCase()));
   return foundContacts;
 }
+
+function deleteContact(contacts, id) {
+  const updatedContacts = contacts.filter((contact) => contact.id !== id);
+  dataContacts = updatedContacts;
+
+  renderContacts(updatedContacts);
+}
+
+function addContact(contacts, { name = null, email = null, phone = null }) {
+  const newId = contacts.length > 0 ? contacts[contacts.length - 1].id + 1 : 1;
+  const newContact = {
+    id: newId,
+    name,
+    phone,
+    email,
+  };
+
+  const updatedContacts = [...contacts, newContact];
+  dataContacts = updatedContacts;
+
+  renderContacts(updatedContacts);
+}
+
+const addContactFormElement = document.getElementById("add-contact-form");
+addContactFormElement.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(addContactFormElement);
+
+  const newContactData = {
+    name: formData.get("name").toString(),
+    phone: formData.get("phone").toString(),
+    email: formData.get("email").toString(),
+  };
+
+  addContact(dataContacts, newContactData);
+});
+
 renderContacts(dataContacts);
