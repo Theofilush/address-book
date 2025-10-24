@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Address Book</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="p-2 space-y-8">
+    <header class="flex gap-4 items-center">
+      <h1 class="font-bold text-2xl">
+        <a href="/">Address Book</a>
+      </h1>
+      <form method="get">
+        <label for="q" class="hidden">Search</label>
+        <input id="q" type="search" name="q" placeholder="Search contacts..." class="border px-2 py-1 rounded-full" />
+      </form>
+    </header>
+
+    <form id="add-contact-form" method="post" class="space-y-2">
+      <div>
+        <label for="full-name">Full Name</label>
+        <input id="full-name" type="text" name="full-name" class="border rounded p-1" />
+      </div>
+      <div>
+        <label for="phone">Phone</label>
+        <input id="phone" type="tel" name="phone" class="border rounded p-1" />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" class="border rounded p-1" />
+      </div>
+
+      <button type="submit" class="bg-black text-white rounded px-2 py-1 text-sm">Add Contact</button>
+    </form>
+
+    <main id="app" class="max-w-xl">
+      <!-- ... -->
+    </main>
+
+    <script src="/experiment/indexv2.js"></script>
+  </body>
+</html>

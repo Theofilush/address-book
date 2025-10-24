@@ -3,15 +3,190 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nasi Goreng Lezat</title>
-    <link rel="stylesheet" href="index.css" />
+    <title>Buku Alamat Saya</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body>
-    <!-- <div class="container">
-    </div> -->
-    <h1>Display Data Contact</h1>
-    <div id="output"></div>
-    <div id="contacts-container"></div>
-    <script src="/index.js"></script>
+  <body class="bg-gray-100 font-sans antialiased">
+    <header class="bg-amber-900 text-white shadow-md">
+      <nav class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Buku Alamat Saya</h1>
+        <button id="openModalBtn" class="bg-white text-amber-600 font-semibold py-2 px-4 rounded-lg shadow hover:bg-gray-100 transition duration-300">+ Tambah Kontak</button>
+      </nav>
+    </header>
+
+    <main class="max-w-5xl mx-auto p-4 mt-6">
+      <div class="mb-6">
+        <input type="text" placeholder="Cari kontak (contoh: Budi...)" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500" />
+      </div>
+      <!-- <div class="bg-white rounded-lg shadow-md overflow-hidden"></div> -->
+      <div class="bg-white p-6 mb-6 rounded-lg shadow-md mx-auto">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">Detail Kontak</h3>
+
+        <form class="space-y-4">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1"> Nama </label>
+            <input type="text" id="name" name="name" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Masukkan nama lengkap..." />
+          </div>
+
+          <div>
+            <label for="address" class="block text-sm font-medium text-gray-700 mb-1"> Alamat </label>
+            <textarea
+              id="address"
+              name="address"
+              rows="3"
+              class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Masukkan alamat lengkap..."></textarea>
+          </div>
+
+          <div>
+            <label for="phoneNumber" class="block text-sm font-medium text-gray-700 mb-1"> Nomor Telepon </label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              name="phoneNumber"
+              class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Contoh: 0812..." />
+          </div>
+
+          <div class="pt-2 flex justify-center">
+            <button type="submit" class="w-96 bg-amber-700 text-white font-semibold py-2 px-4 rounded-lg hover:bg-amber-800 transition duration-300 shadow">Simpan</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <ul class="divide-y divide-gray-200">
+          <li class="p-4 flex items-center justify-between hover:bg-gray-50 transition">
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-xl mr-4">AS</div>
+              <div>
+                <p class="font-semibold text-gray-900">Andi Setiawan</p>
+                <p class="text-sm text-gray-600">andi.setiawan@example.com</p>
+                <p class="text-sm text-gray-500">0812-3456-7890</p>
+              </div>
+            </div>
+            <div class="flex space-x-2">
+              <button class="text-gray-400 hover:text-blue-500" title="Edit">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.536L16.732 3.732z"></path>
+                </svg>
+              </button>
+              <button class="text-gray-400 hover:text-red-500" title="Hapus">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                </svg>
+              </button>
+            </div>
+          </li>
+
+          <li class="p-4 flex items-center justify-between hover:bg-gray-50 transition">
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-purple-100 text-purple-700 rounded-full flex items-center justify-center font-bold text-xl mr-4">BS</div>
+              <div>
+                <p class="font-semibold text-gray-900">Budi Santoso</p>
+                <p class="text-sm text-gray-600">budi.s@example.com</p>
+                <p class="text-sm text-gray-500">0898-7654-3210</p>
+              </div>
+            </div>
+            <div class="flex space-x-2">
+              <button class="text-gray-400 hover:text-blue-500" title="Edit">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.536L16.732 3.732z"></path>
+                </svg>
+              </button>
+              <button class="text-gray-400 hover:text-red-500" title="Hapus">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                </svg>
+              </button>
+            </div>
+          </li>
+
+          <li class="p-4 flex items-center justify-between hover:bg-gray-50 transition">
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold text-xl mr-4">CK</div>
+              <div>
+                <p class="font-semibold text-gray-900">Citra Kirana</p>
+                <p class="text-sm text-gray-600">citra.kirana@example.com</p>
+                <p class="text-sm text-gray-500">0852-1122-3344</p>
+              </div>
+            </div>
+            <div class="flex space-x-2">
+              <button class="text-gray-400 hover:text-blue-500" title="Edit">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.536L16.732 3.732z"></path>
+                </svg>
+              </button>
+              <button class="text-gray-400 hover:text-red-500" title="Hapus">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                </svg>
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <div id="contactModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 hidden">
+      <div class="bg-white p-6 rounded-lg shadow-xl w-full max-w-md">
+        <h2 class="text-2xl font-semibold mb-4">Tambah Kontak Baru</h2>
+
+        <form>
+          <div class="mb-4">
+            <label for="nama" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+            <input type="text" id="nama" name="nama" class="w-full p-2 border border-gray-300 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div class="mb-4">
+            <label for="telepon" class="block text-sm font-medium text-gray-700">Nomor Telepon</label>
+            <input type="tel" id="telepon" name="telepon" class="w-full p-2 border border-gray-300 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+
+          <div class="flex justify-end space-x-3 mt-6">
+            <button type="button" id="closeModalBtn" class="bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 transition">Batal</button>
+            <button type="submit" class="bg-amber-700 text-white font-semibold py-2 px-4 rounded-lg hover:bg-amber-800 transition">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const openModalBtn = document.getElementById("openModalBtn");
+        const closeModalBtn = document.getElementById("closeModalBtn");
+        const contactModal = document.getElementById("contactModal");
+
+        openModalBtn.addEventListener("click", () => {
+          contactModal.classList.remove("hidden");
+        });
+
+        closeModalBtn.addEventListener("click", () => {
+          contactModal.classList.add("hidden");
+        });
+
+        // Opsional: Tutup modal jika klik di luar area form
+        contactModal.addEventListener("click", (e) => {
+          if (e.target === contactModal) {
+            contactModal.classList.add("hidden");
+          }
+        });
+      });
+    </script>
   </body>
 </html>
