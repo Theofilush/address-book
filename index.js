@@ -368,7 +368,7 @@ function renderContact(contact) {
               </div>
             </div>
             <div class="flex space-x-2">
-              <button class="text-gray-400 hover:text-blue-500" title="Edit">
+              <button id="openEditContactModalBtn" class="text-gray-400 hover:text-blue-500" title="Edit">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.536L16.732 3.732z"></path>
                 </svg>
@@ -428,3 +428,49 @@ addContactFormElement.addEventListener("submit", (event) => {
 });
 
 renderContacts(dataContacts);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const openAddContactModalBtn = document.getElementById("openAddContactModalBtn");
+  const closeAddContactModalBtn = document.getElementById("closeAddContactModalBtn");
+  const submitAddContactModalBtn = document.getElementById("submitAddContactModalBtn");
+  const addContactModal = document.getElementById("addContactModal");
+  const openEditContactModalBtn = document.getElementById("openEditContactModalBtn");
+  const closeEditContactModalBtn = document.getElementById("closeEditContactModalBtn");
+  const submitEditContactModalBtn = document.getElementById("submitEditContactModalBtn");
+  const editContactModal = document.getElementById("editContactModal");
+
+  openAddContactModalBtn.addEventListener("click", () => {
+    addContactModal.classList.remove("hidden");
+  });
+
+  closeAddContactModalBtn.addEventListener("click", () => {
+    addContactModal.classList.add("hidden");
+  });
+  submitAddContactModalBtn.addEventListener("click", () => {
+    addContactModal.classList.add("hidden");
+  });
+
+  addContactModal.addEventListener("click", (e) => {
+    // close modal if click outside modal form
+    if (e.target === addContactModal) {
+      addContactModal.classList.add("hidden");
+    }
+  });
+
+  openEditContactModalBtn.addEventListener("click", () => {
+    editContactModal.classList.remove("hidden");
+  });
+
+  closeEditContactModalBtn.addEventListener("click", () => {
+    editContactModal.classList.add("hidden");
+  });
+  submitEditContactModalBtn.addEventListener("click", () => {
+    editContactModal.classList.add("hidden");
+  });
+
+  editContactModal.addEventListener("click", (e) => {
+    if (e.target === editContactModal) {
+      editContactModal.classList.add("hidden");
+    }
+  });
+});
