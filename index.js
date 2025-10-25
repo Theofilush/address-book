@@ -4,7 +4,7 @@ let dataContacts = [
     name: "Yoga Prasetyo",
     nickname: "Yoga",
     email: "yoga.prasetyo@example.com",
-    phone: "081434567890",
+    phone: "6281434567890",
     socialMedia: {
       instagram: "@yogaprasetyo",
       linkedin: "yogaprasetyo",
@@ -38,7 +38,7 @@ let dataContacts = [
     name: null,
     nickname: "Siti",
     email: "siti.ramadhani@example.com",
-    phone: "081345678901",
+    phone: "6281345678901",
     socialMedia: {
       instagram: "@siti.design",
       linkedin: "sitiramadhani",
@@ -72,7 +72,7 @@ let dataContacts = [
     name: "Budi Santoso",
     nickname: "Budi",
     email: "budi.santoso@example.com",
-    phone: "081356789012",
+    phone: "6281356789012",
     socialMedia: {
       instagram: "@budisantoso.dev",
       linkedin: "budisantoso",
@@ -106,7 +106,7 @@ let dataContacts = [
     name: "Rina Kartika",
     nickname: "Rina",
     email: "rina.kartika@example.com",
-    phone: "081367890123",
+    phone: "6281367890123",
     socialMedia: {
       instagram: "@rinakartika",
       linkedin: "rinakartika",
@@ -140,7 +140,7 @@ let dataContacts = [
     name: "Dedi Pratama",
     nickname: "Dedi",
     email: "dedi.pratama@example.com",
-    phone: "081378901234",
+    phone: "6281378901234",
     socialMedia: {
       instagram: "@dedipratama",
       linkedin: "dedipratama",
@@ -174,7 +174,7 @@ let dataContacts = [
     name: "Lestari Wulandari",
     nickname: "Tari",
     email: "lestari.w@example.com",
-    phone: "081389012345",
+    phone: "6281389012345",
     socialMedia: {
       instagram: "@lestari.ai",
       linkedin: "lestariwulandari",
@@ -208,7 +208,7 @@ let dataContacts = [
     name: "Andi Wijaya",
     nickname: "Andi",
     email: "andi.wijaya@example.com",
-    phone: "081390123456",
+    phone: "6281390123456",
     socialMedia: {
       instagram: "@andiwijaya",
       linkedin: "andiwijaya",
@@ -242,7 +242,7 @@ let dataContacts = [
     name: "Hendra Saputra",
     nickname: "Hendra",
     email: "hendra.saputra@example.com",
-    phone: "081412345678",
+    phone: "6281412345678",
     socialMedia: {
       instagram: "@hendra.mobile",
       linkedin: "hendrasaputra",
@@ -276,7 +276,7 @@ let dataContacts = [
     name: "Nadia Permata",
     nickname: "Nadia",
     email: "nadia.permata@example.com",
-    phone: "081423456789",
+    phone: "6281423456789",
     socialMedia: {
       instagram: "@nadia.data",
       linkedin: "nadiapermata",
@@ -310,7 +310,7 @@ let dataContacts = [
     name: "Rizky Maulana",
     nickname: "Rizky",
     email: "rizky.maulana@example.com",
-    phone: "081434567891",
+    phone: "6281434567891",
     socialMedia: {
       instagram: "@rizkymaulana",
       linkedin: "rizkymaulana",
@@ -375,6 +375,14 @@ function getRandomColorPair() {
   return colorPairs[Math.floor(Math.random() * colorPairs.length)];
 }
 
+function toTitleCase(contactName) {
+  return contactName
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
 function renderContacts(contacts) {
   const appElement = document.getElementById("contactList");
 
@@ -421,7 +429,10 @@ function renderContact(contact) {
 }
 
 function searchContacts(contacts, keyword) {
-  const foundContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(keyword.toLowerCase()));
+  const foundContacts = contacts.filter((contact) => {
+    const contactName = contact.name ?? "";
+    return contactName.toLowerCase().includes(keyword.toLowerCase());
+  });
   return foundContacts;
 }
 
@@ -458,14 +469,6 @@ function addContact(contacts, { name = null, email = null, phone = null }) {
   dataContacts = updatedContacts;
 
   renderContacts(updatedContacts);
-}
-
-function toTitleCase(contactName) {
-  return contactName
-    .toLowerCase()
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
 }
 
 const addContactFormElement = document.getElementById("add-contact-form");
