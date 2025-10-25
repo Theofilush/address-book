@@ -341,6 +341,40 @@ let dataContacts = [
   },
 ];
 
+function getInitials(name) {
+  return name
+    ? name
+        .split(" ")
+        .map((firstChar) => firstChar[0])
+        .join("")
+        .toUpperCase()
+    : "-";
+}
+
+const colorPairs = [
+  { bg: "bg-red-200", text: "text-red-800" },
+  { bg: "bg-blue-200", text: "text-blue-800" },
+  { bg: "bg-green-200", text: "text-green-800" },
+  { bg: "bg-yellow-200", text: "text-yellow-800" },
+  { bg: "bg-pink-200", text: "text-pink-800" },
+  { bg: "bg-purple-200", text: "text-purple-800" },
+  { bg: "bg-indigo-200", text: "text-indigo-800" },
+  { bg: "bg-amber-200", text: "text-amber-800" },
+  { bg: "bg-teal-200", text: "text-teal-800" },
+  { bg: "bg-emerald-200", text: "text-emerald-800" },
+  { bg: "bg-orange-200", text: "text-orange-800" },
+  { bg: "bg-rose-200", text: "text-rose-800" },
+  { bg: "bg-cyan-200", text: "text-cyan-800" },
+  { bg: "bg-sky-200", text: "text-sky-800" },
+  { bg: "bg-slate-200", text: "text-slate-800" },
+  { bg: "bg-stone-200", text: "text-stone-800" },
+  { bg: "bg-gray-200", text: "text-gray-800" },
+];
+
+function getRandomColorPair() {
+  return colorPairs[Math.floor(Math.random() * colorPairs.length)];
+}
+
 function renderContacts(contacts) {
   const appElement = document.getElementById("contactList");
 
@@ -355,17 +389,12 @@ function renderContacts(contacts) {
 }
 
 function renderContact(contact) {
-  const initials = contact.name
-    ? contact.name
-        .split(" ")
-        .map((firstChar) => firstChar[0])
-        .join("")
-        .toUpperCase()
-    : "-";
+  const initials = getInitials(contact.name);
+  const { bg, text } = getRandomColorPair();
 
   return `<li class="p-4 flex items-center justify-between hover:bg-gray-50 transition">
             <div class="flex items-center">
-              <div class="w-12 h-12 bg-amber-200 text-amber-700 rounded-full flex items-center justify-center font-bold text-xl mr-4">${initials}</div>
+              <div class="w-12 h-12 ${bg} ${text}  rounded-full flex items-center justify-center font-bold text-xl mr-4">${initials}</div>
               <div>
                 <p class="font-semibold text-gray-900">${contact.name ?? "-"}</p>
                 <p class="text-sm text-gray-600">${contact.email ?? "-"}</p>
@@ -390,6 +419,7 @@ function renderContact(contact) {
             </div>
           </li>`;
 }
+
 function searchContacts(contacts, keyword) {
   const foundContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(keyword.toLowerCase()));
   return foundContacts;
