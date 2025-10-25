@@ -365,7 +365,7 @@ function renderContact(contact) {
 
   return `<li class="p-4 flex items-center justify-between hover:bg-gray-50 transition">
             <div class="flex items-center">
-              <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-xl mr-4">${initials}</div>
+              <div class="w-12 h-12 bg-amber-200 text-ambery-700 rounded-full flex items-center justify-center font-bold text-xl mr-4">${initials}</div>
               <div>
                 <p class="font-semibold text-gray-900">${contact.name ?? "-"}</p>
                 <p class="text-sm text-gray-600">${contact.email ?? "-"}</p>
@@ -408,7 +408,7 @@ function renderEditContact(contacts, id) {
   if (!contact) return;
 
   document.getElementById("idEditContact").value = contact.id;
-  document.getElementById("nameEditContact").value = contact.name;
+  document.getElementById("nameEditContact").value = contact.name ?? "-";
   document.getElementById("emailEditContact").value = contact.email;
   document.getElementById("phoneEditContact").value = contact.phone;
 
