@@ -460,6 +460,14 @@ function addContact(contacts, { name = null, email = null, phone = null }) {
   renderContacts(updatedContacts);
 }
 
+function toTitleCase(contactName) {
+  return contactName
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
 const addContactFormElement = document.getElementById("add-contact-form");
 addContactFormElement.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -467,7 +475,7 @@ addContactFormElement.addEventListener("submit", (event) => {
   const formData = new FormData(addContactFormElement);
 
   const newContactData = {
-    name: formData.get("name").toString(),
+    name: toTitleCase(formData.get("name").toString()),
     phone: formData.get("phone").toString(),
     email: formData.get("email").toString(),
   };
@@ -498,7 +506,7 @@ editContactFormElement.addEventListener("submit", (event) => {
 
   const newContactData = {
     id: formData.get("idEditContact").toString(),
-    name: formData.get("nameEditContact").toString(),
+    name: toTitleCase(formData.get("nameEditContact").toString()),
     phone: formData.get("phoneEditContact").toString(),
     email: formData.get("emailEditContact").toString(),
   };
