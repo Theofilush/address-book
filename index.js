@@ -433,6 +433,7 @@ function searchContacts(contacts, keyword) {
     const contactName = contact.name ?? "";
     return contactName.toLowerCase().includes(keyword.toLowerCase());
   });
+
   return foundContacts;
 }
 
@@ -546,9 +547,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  openEditContactModalBtn.addEventListener("click", () => {
-    editContactModal.classList.remove("hidden");
-  });
+  if (openEditContactModalBtn && editContactModal) {
+    openEditContactModalBtn.addEventListener("click", () => {
+      editContactModal.classList.remove("hidden");
+    });
+  }
 
   closeEditContactModalBtn.addEventListener("click", () => {
     editContactModal.classList.add("hidden");
