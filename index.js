@@ -366,7 +366,7 @@ function renderContact(contact) {
               </div>
             </div>
             <div class="flex space-x-2">
-              <button id="openEditContactModalBtn" class="text-gray-400 hover:text-blue-500" title="Edit" onclick="renderEditContactById(dataContacts, ${contact.id})">
+              <button id="openEditContactModalBtn" class="text-gray-400 hover:text-blue-500" title="Edit" onclick="renderEditContact(dataContacts, ${contact.id})">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.536L16.732 3.732z"></path>
                 </svg>
@@ -395,36 +395,17 @@ function deleteContact(contacts, id) {
   renderContacts(updatedContacts);
 }
 
-function renderEditContactById(contacts, id) {
+const editContactModal = document.getElementById("editContactModal");
+function renderEditContact(contacts, id) {
   const contact = contacts.find((contact) => contact.id === id);
+  if (!contact) return;
 
-  document.getElementById("idEditContact").defaultValue = contact.id;
-  document.getElementById("nameEditContact").defaultValue = contact.name;
-  document.getElementById("emailEditContact").defaultValue = contact.email;
-  document.getElementById("phoneEditContact").defaultValue = contact.phone;
+  document.getElementById("idEditContact").value = contact.id;
+  document.getElementById("nameEditContact").value = contact.name;
+  document.getElementById("emailEditContact").value = contact.email;
+  document.getElementById("phoneEditContact").value = contact.phone;
 
-  const appElement = document.getElementById("edit-contact-form");
-  appElement.innerHTML = `<div class="invisible">
-            <label for="idEditContact-${contact.id}" class="block text-sm font-medium text-gray-700">ID</label>
-            <input type="hidden" id="idEditContact-${contact.id}" name="idEditContact-${contact.id}" />
-          </div>
-          <div class="mb-4">
-            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-            <input type="text" id="nameEditContact-${contact.id}" name="nameEditContact-${contact.id}" class="w-full p-2 border border-gray-300 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-          <div class="mb-4">
-            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-            <input type="email" id="emailEditContact-${contact.id}" name="emailEditContact-${contact.id}" class="w-full p-2 border border-gray-300 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-          <div class="mb-4">
-            <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-            <input type="tel" id="phoneEditContact-${contact.id}" name="phoneEditContact-${contact.id}" class="w-full p-2 border border-gray-300 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-          
-          <div class="flex justify-end space-x-3 mt-6">
-            <button type="button" id="closeEditContactModalBtn-${contact.id}" class="bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 transition">Cancel</button>
-            <button type="submit" id="submitEditContactModalBtn-${contact.id}" class="bg-amber-700 text-white font-semibold py-2 px-4 rounded-lg hover:bg-amber-800 transition">Save</button>
-          </div>`;
+  editContactModal.classList.remove("hidden");
 }
 
 function addContact(contacts, { name = null, email = null, phone = null }) {
@@ -466,18 +447,18 @@ function editContact(contacts, id, newContact) {
         phone: newContact.phone ?? contact.phone,
         email: newContact.email ?? contact.email,
       };
-    } else return contact;
+    }
   });
   dataContacts = updatedContacts;
-  console.log(dataContacts);
-  console.log(updatedContacts);
-  console.log(contacts);
+  console.log("dataContacts: ", dataContacts);
+  console.log("updatedContacts", updatedContacts);
+  console.log("contacts", contacts);
   console.log(id);
   console.log(id);
   console.log(newContact);
   console.log(newContact.name);
 
-  renderContacts(updatedContacts);
+  renderContacts(dataContacts);
 }
 
 const editContactFormElement = document.getElementById("edit-contact-form");
@@ -506,7 +487,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const openEditContactModalBtn = document.getElementById("openEditContactModalBtn");
   const closeEditContactModalBtn = document.getElementById("closeEditContactModalBtn");
   const submitEditContactModalBtn = document.getElementById("submitEditContactModalBtn");
-  const editContactModal = document.getElementById("editContactModal");
+  // const editContactModal = document.getElementById("editContactModal");
 
   openAddContactModalBtn.addEventListener("click", () => {
     addContactModal.classList.remove("hidden");

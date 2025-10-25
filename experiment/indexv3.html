@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Edit Kontak Modal - Tailwind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex flex-col items-center p-6">
+    <h1 class="text-2xl font-bold mb-4">Daftar Kontak</h1>
+    <ul id="contactList" class="w-full max-w-md bg-white rounded-lg shadow p-4 space-y-3"></ul>
+
+    <!-- Modal -->
+    <div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="bg-white rounded-2xl shadow-lg w-96 p-6 animate-fadeIn">
+        <h2 class="text-lg font-bold mb-4">Edit Kontak</h2>
+
+        <form id="editForm" class="space-y-3">
+          <div>
+            <label class="block text-sm text-gray-600">Nama</label>
+            <input id="editName" type="text" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-sm text-gray-600">Email</label>
+            <input id="editEmail" type="email" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-sm text-gray-600">Telepon</label>
+            <input id="editPhone" type="text" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none" />
+          </div>
+
+          <div class="flex justify-end space-x-2 mt-4">
+            <button type="button" onclick="closeModal()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">Batal</button>
+            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.2s ease-out;
+      }
+    </style>
+
+    <script>
+      // ====== Data Awal ======
+      const contacts = [
+        { id: 1, name: "Tio", email: "tio@example.com", phone: "08123456789" },
+        { id: 2, name: "Luna", email: "luna@example.com", phone: "08123456780" },
+        { id: 3, name: "Rafi", email: "rafi@example.com", phone: "08123456781" },
+      ];
+
+      // ====== Elemen DOM ======
+      const contactList = document.getElementById("contactList");
+      const modal = document.getElementById("modal");
+      const editName = document.getElementById("editName");
+      const editEmail = document.getElementById("editEmail");
+      const editPhone = document.getElementById("editPhone");
+      const editForm = document.getElementById("editForm");
+
+      let currentContactId = null;
+
+      // ====== Render Daftar Kontak ======
+      function renderContacts() {
+        contactList.innerHTML = "";
+        contacts.forEach((contact) => {
+          const li = document.createElement("li");
+          li.className = "flex justify-between items-center border-b pb-2";
+          li.innerHTML = `
+          <div>
+            <p class="font-semibold">${contact.name}</p>
+            <p class="text-sm text-gray-600">${contact.email}</p>
+            <p class="text-sm text-gray-600">${contact.phone}</p>
+          </div>
+          <button class="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700"
+            onclick="openModal(${contact.id})">Edit</button>
+        `;
+          contactList.appendChild(li);
+        });
+      }
+
+      // ====== Modal Control ======
+      function openModal(id) {
+        const contact = contacts.find((c) => c.id === id);
+        if (!contact) return;
+
+        currentContactId = id;
+        editName.value = contact.name;
+        editEmail.value = contact.email;
+        editPhone.value = contact.phone;
+
+        modal.classList.remove("hidden");
+      }
+
+      function closeModal() {
+        modal.classList.add("hidden");
+      }
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      // ====== Simpan Perubahan ======
+      editForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const index = contacts.findIndex((c) => c.id === currentContactId);
+        if (index !== -1) {
+          contacts[index].name = editName.value;
+          contacts[index].email = editEmail.value;
+          contacts[index].phone = editPhone.value;
+        }
+
+        renderContacts();
+        closeModal();
+      });
+
+      // ====== Inisialisasi ======
+      renderContacts();
+    </script>
+  </body>
+</html>

@@ -161,3 +161,12 @@ addContactFormElement.addEventListener("submit", (event) => {
 });
 
 renderContacts(dataContacts);
+
+// const initials = contacts.map(contact =>
+//   contact.name
+//     .split(" ")
+//     .map(n => n[0])
+//     .join("")
+//     .toUpperCase()
+// );
+// console.log(initials); // ["A", "B"] jika nama tunggal, atau ["AR", "BS"] jika nama lengkap
