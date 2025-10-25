@@ -346,7 +346,6 @@ function renderContacts(contacts) {
 
   const searchParams = new URLSearchParams(window.location.search);
   const query = searchParams.get("q");
-
   const queryElement = document.getElementById("q");
   queryElement.value = query;
 
@@ -440,25 +439,16 @@ addContactFormElement.addEventListener("submit", (event) => {
 
 function editContact(contacts, id, newContact) {
   const updatedContacts = contacts.map((contact) => {
-    if (contact.id === id) {
+    if (parseInt(contact.id) === parseInt(newContact.id)) {
       return {
         ...contact,
-        name: newContact.name ?? contact.name,
-        phone: newContact.phone ?? contact.phone,
-        email: newContact.email ?? contact.email,
+        ...newContact,
       };
-    }
+    } else return contact;
   });
-  dataContacts = updatedContacts;
-  console.log("dataContacts: ", dataContacts);
-  console.log("updatedContacts", updatedContacts);
-  console.log("contacts", contacts);
-  console.log(id);
-  console.log(id);
-  console.log(newContact);
-  console.log(newContact.name);
 
-  renderContacts(dataContacts);
+  dataContacts = updatedContacts;
+  renderContacts(updatedContacts);
 }
 
 const editContactFormElement = document.getElementById("edit-contact-form");
@@ -469,6 +459,7 @@ editContactFormElement.addEventListener("submit", (event) => {
   const idContact = formData.get("idEditContact");
 
   const newContactData = {
+    id: formData.get("idEditContact").toString(),
     name: formData.get("nameEditContact").toString(),
     phone: formData.get("phoneEditContact").toString(),
     email: formData.get("emailEditContact").toString(),
@@ -487,7 +478,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const openEditContactModalBtn = document.getElementById("openEditContactModalBtn");
   const closeEditContactModalBtn = document.getElementById("closeEditContactModalBtn");
   const submitEditContactModalBtn = document.getElementById("submitEditContactModalBtn");
-  // const editContactModal = document.getElementById("editContactModal");
 
   openAddContactModalBtn.addEventListener("click", () => {
     addContactModal.classList.remove("hidden");
