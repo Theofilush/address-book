@@ -35,7 +35,7 @@ let dataContacts = [
   },
   {
     id: 2,
-    name: "Siti Ramadhani",
+    name: null,
     nickname: "Siti",
     email: "siti.ramadhani@example.com",
     phone: "081345678901",
@@ -355,9 +355,17 @@ function renderContacts(contacts) {
 }
 
 function renderContact(contact) {
+  const initials = contact.name
+    ? contact.name
+        .split(" ")
+        .map((firstChar) => firstChar[0])
+        .join("")
+        .toUpperCase()
+    : "-";
+
   return `<li class="p-4 flex items-center justify-between hover:bg-gray-50 transition">
             <div class="flex items-center">
-              <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-xl mr-4">AS</div>
+              <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-xl mr-4">${initials}</div>
               <div>
                 <p class="font-semibold text-gray-900">${contact.name ?? "-"}</p>
                 <p class="text-sm text-gray-600">${contact.email ?? "-"}</p>
