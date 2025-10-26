@@ -341,16 +341,6 @@ let dataContacts = [
   },
 ];
 
-function getInitials(name) {
-  return name
-    ? name
-        .split(" ")
-        .map((firstChar) => firstChar[0])
-        .join("")
-        .toUpperCase()
-    : "-";
-}
-
 const colorPairs = [
   { bg: "bg-red-200", text: "text-red-800" },
   { bg: "bg-blue-200", text: "text-blue-800" },
@@ -370,6 +360,16 @@ const colorPairs = [
   { bg: "bg-stone-200", text: "text-stone-800" },
   { bg: "bg-gray-200", text: "text-gray-800" },
 ];
+
+function getInitials(name) {
+  return name
+    ? name
+        .split(" ")
+        .map((firstChar) => firstChar[0])
+        .join("")
+        .toUpperCase()
+    : "-";
+}
 
 function getRandomColorPair() {
   return colorPairs[Math.floor(Math.random() * colorPairs.length)];
@@ -411,18 +411,10 @@ function renderContact(contact) {
             </div>
             <div class="flex space-x-2">
               <button id="openEditContactModalBtn" class="text-gray-400 hover:text-blue-500" title="Edit" onclick="renderEditContact(dataContacts, ${contact.id})">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.536L16.732 3.732z"></path>
-                </svg>
+                <i class="fas fa-pen"></i>
               </button>
               <button class="text-gray-400 hover:text-red-500" title="Delete" onclick="deleteContact(dataContacts, ${contact.id})">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                </svg>
+                <i class="fas fa-trash"></i>
               </button>
             </div>
           </li>`;
@@ -442,19 +434,6 @@ function deleteContact(contacts, id) {
   dataContacts = updatedContacts;
 
   renderContacts(updatedContacts);
-}
-
-const editContactModal = document.getElementById("editContactModal");
-function renderEditContact(contacts, id) {
-  const contact = contacts.find((contact) => contact.id === id);
-  if (!contact) return;
-
-  document.getElementById("idEditContact").value = contact.id;
-  document.getElementById("nameEditContact").value = contact.name ?? "-";
-  document.getElementById("emailEditContact").value = contact.email;
-  document.getElementById("phoneEditContact").value = contact.phone;
-
-  editContactModal.classList.remove("hidden");
 }
 
 function addContact(contacts, { name = null, email = null, phone = null }) {
@@ -487,7 +466,19 @@ addContactFormElement.addEventListener("submit", (event) => {
   addContact(dataContacts, newContactData);
 });
 
-function editContact(contacts, id, newContact) {
+const editContactModal = document.getElementById("editContactModal");
+function renderEditContact(contacts, id) {
+  const contact = contacts.find((contact) => contact.id === id);
+  if (!contact) return;
+
+  document.getElementById("idEditContact").value = contact.id;
+  document.getElementById("nameEditContact").value = contact.name ?? "-";
+  document.getElementById("emailEditContact").value = contact.email;
+  document.getElementById("phoneEditContact").value = contact.phone;
+  editContactModal.classList.remove("hidden");
+}
+
+function editContact(contacts, newContact) {
   const updatedContacts = contacts.map((contact) => {
     if (parseInt(contact.id) === parseInt(newContact.id)) {
       return {
@@ -509,13 +500,13 @@ editContactFormElement.addEventListener("submit", (event) => {
   const idContact = formData.get("idEditContact");
 
   const newContactData = {
-    id: formData.get("idEditContact").toString(),
+    id: parseInt(formData.get("idEditContact")),
     name: toTitleCase(formData.get("nameEditContact").toString()),
     phone: formData.get("phoneEditContact").toString(),
     email: formData.get("emailEditContact").toString(),
   };
 
-  editContact(dataContacts, idContact, newContactData);
+  editContact(dataContacts, newContactData);
 });
 
 renderContacts(dataContacts);
