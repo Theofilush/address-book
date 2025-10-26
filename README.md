@@ -2,8 +2,6 @@
 
 A simple and responsive contact management system built with JavaScript and Tailwind CSS. Easily add, edit, delete, and search contacts with dynamic color-coded initials.
 
----
-
 ## 🚀 Features
 
 - 🔍 Search contacts by name
@@ -11,16 +9,12 @@ A simple and responsive contact management system built with JavaScript and Tail
 - ✏️ Edit existing contact details
 - 🗑️ Delete contacts
 
----
-
 ## 🧱 Tech Stack
 
 - HTML
 - CSS (Tailwind)
 - JavaScript
 - Font Awesome (Icons)
-
----
 
 ## 📂 Folder Structure
 
@@ -54,10 +48,6 @@ git clone https://github.com/Theofilush/address-book.git
 | `editContact()`    | Updates an existing contact     |
 | `deleteContact()`  | Removes a contact from the list |
 
----
-
 ## 📸 UI Preview
-
-> Add a screenshot here once available:
 
 ![Address Book UI](/images/dashboard-address-book.jpg)
