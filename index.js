@@ -375,7 +375,7 @@ function getRandomColorPair() {
   return colorPairs[Math.floor(Math.random() * colorPairs.length)];
 }
 
-function toTitleCase(contactName) {
+function convertToTitleCase(contactName) {
   return contactName
     .toLowerCase()
     .split(" ")
@@ -384,7 +384,7 @@ function toTitleCase(contactName) {
 }
 
 function renderContacts(contacts) {
-  const appElement = document.getElementById("contactList");
+  const contactListElement = document.getElementById("contact-list");
 
   const searchParams = new URLSearchParams(window.location.search);
   const query = searchParams.get("q");
@@ -393,7 +393,9 @@ function renderContacts(contacts) {
 
   const filteredContacts = query ? searchContacts(contacts, query) : contacts;
 
-  appElement.innerHTML = `${filteredContacts.map((contact) => renderContact(contact)).join("")}`;
+  contactListElement.innerHTML = `${filteredContacts
+    .map((contact) => renderContact(contact))
+    .join("")}`;
 }
 
 function renderContact(contact) {
@@ -404,16 +406,22 @@ function renderContact(contact) {
             <div class="flex items-center">
               <div class="w-12 h-12 ${bg} ${text}  rounded-full flex items-center justify-center font-bold text-xl mr-4">${initials}</div>
               <div>
-                <p class="font-semibold text-gray-900">${contact.name ?? "-"}</p>
+                <p class="font-semibold text-gray-900">${
+                  contact.name ?? "-"
+                }</p>
                 <p class="text-sm text-gray-600">${contact.email ?? "-"}</p>
                 <p class="text-sm text-gray-500">${contact.phone ?? "-"}</p>
               </div>
             </div>
             <div class="flex space-x-2">
-              <button id="openEditContactModalBtn" class="text-gray-400 hover:text-blue-500" title="Edit" onclick="renderEditContact(dataContacts, ${contact.id})">
+              <button id="open-edit-contact-modal" class="text-gray-400 hover:text-blue-500" title="Edit" onclick="setEditContactFormValues(dataContacts, ${
+                contact.id
+              })">
                 <i class="fas fa-pen"></i>
               </button>
-              <button class="text-gray-400 hover:text-red-500" title="Delete" onclick="deleteContact(dataContacts, ${contact.id})">
+              <button class="text-gray-400 hover:text-red-500" title="Delete" onclick="deleteContact(dataContacts, ${
+                contact.id
+              })">
                 <i class="fas fa-trash"></i>
               </button>
             </div>
@@ -452,13 +460,16 @@ function addContact(contacts, { name = null, email = null, phone = null }) {
 }
 
 const addContactFormElement = document.getElementById("add-contact-form");
+const editContactModal = document.getElementById("edit-contact-modal");
+const editContactFormElement = document.getElementById("edit-contact-form");
+
 addContactFormElement.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const formData = new FormData(addContactFormElement);
 
   const newContactData = {
-    name: toTitleCase(formData.get("name").toString()),
+    name: convertToTitleCase(formData.get("name").toString()),
     phone: formData.get("phone").toString(),
     email: formData.get("email").toString(),
   };
@@ -466,15 +477,15 @@ addContactFormElement.addEventListener("submit", (event) => {
   addContact(dataContacts, newContactData);
 });
 
-const editContactModal = document.getElementById("editContactModal");
-function renderEditContact(contacts, id) {
+function setEditContactFormValues(contacts, id) {
   const contact = contacts.find((contact) => contact.id === id);
   if (!contact) return;
 
-  document.getElementById("idEditContact").value = contact.id;
-  document.getElementById("nameEditContact").value = contact.name ?? "-";
-  document.getElementById("emailEditContact").value = contact.email;
-  document.getElementById("phoneEditContact").value = contact.phone;
+  document.getElementById("edit-contact-id").value = contact.id;
+  document.getElementById("edit-contact-name").value = contact.name ?? "-";
+  document.getElementById("edit-contact-email").value = contact.email;
+  document.getElementById("edit-contact-phone").value = contact.phone;
+
   editContactModal.classList.remove("hidden");
 }
 
@@ -492,18 +503,16 @@ function editContact(contacts, newContact) {
   renderContacts(updatedContacts);
 }
 
-const editContactFormElement = document.getElementById("edit-contact-form");
 editContactFormElement.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const formData = new FormData(editContactFormElement);
-  const idContact = formData.get("idEditContact");
 
   const newContactData = {
-    id: parseInt(formData.get("idEditContact")),
-    name: toTitleCase(formData.get("nameEditContact").toString()),
-    phone: formData.get("phoneEditContact").toString(),
-    email: formData.get("emailEditContact").toString(),
+    id: parseInt(formData.get("edit-contact-id")),
+    name: convertToTitleCase(formData.get("edit-contact-name").toString()),
+    phone: formData.get("edit-contact-phone").toString(),
+    email: formData.get("edit-contact-email").toString(),
   };
 
   editContact(dataContacts, newContactData);
@@ -512,13 +521,25 @@ editContactFormElement.addEventListener("submit", (event) => {
 renderContacts(dataContacts);
 
 document.addEventListener("DOMContentLoaded", () => {
-  const openAddContactModalBtn = document.getElementById("openAddContactModalBtn");
-  const closeAddContactModalBtn = document.getElementById("closeAddContactModalBtn");
-  const submitAddContactModalBtn = document.getElementById("submitAddContactModalBtn");
+  const openAddContactModalBtn = document.getElementById(
+    "openAddContactModalBtn"
+  );
+  const closeAddContactModalBtn = document.getElementById(
+    "closeAddContactModalBtn"
+  );
+  const submitAddContactModalBtn = document.getElementById(
+    "submitAddContactModalBtn"
+  );
   const addContactModal = document.getElementById("addContactModal");
-  const openEditContactModalBtn = document.getElementById("openEditContactModalBtn");
-  const closeEditContactModalBtn = document.getElementById("closeEditContactModalBtn");
-  const submitEditContactModalBtn = document.getElementById("submitEditContactModalBtn");
+  const openEditContactModalBtn = document.getElementById(
+    "open-edit-contact-modal"
+  );
+  const closeEditContactModalBtn = document.getElementById(
+    "closeEditContactModalBtn"
+  );
+  const submitEditContactModalBtn = document.getElementById(
+    "submitEditContactModalBtn"
+  );
 
   openAddContactModalBtn.addEventListener("click", () => {
     addContactModal.classList.remove("hidden");
@@ -527,6 +548,7 @@ document.addEventListener("DOMContentLoaded", () => {
   closeAddContactModalBtn.addEventListener("click", () => {
     addContactModal.classList.add("hidden");
   });
+
   submitAddContactModalBtn.addEventListener("click", () => {
     addContactModal.classList.add("hidden");
   });
@@ -547,6 +569,7 @@ document.addEventListener("DOMContentLoaded", () => {
   closeEditContactModalBtn.addEventListener("click", () => {
     editContactModal.classList.add("hidden");
   });
+
   submitEditContactModalBtn.addEventListener("click", () => {
     editContactModal.classList.add("hidden");
   });
