@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Address Book</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  </head>
+  <body class="bg-gray-100 font-sans antialiased">
+    <div class="min-h-screen bg-gradient-to-r from-indigo-50 via-white to-indigo-100 p-8">
+      <!-- Header -->
+      <header class="flex justify-between items-center mb-8">
+        <h1 class="text-3xl font-bold text-indigo-700">✨ Create New Task</h1>
+        <a href="/dashboard" class="text-indigo-600 hover:text-indigo-800 font-medium"> ← Back to Dashboard </a>
+      </header>
+
+      <!-- Form Card -->
+      <section class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8">
+        <h2 class="text-2xl font-semibold text-gray-700 mb-6">📝 Task Information</h2>
+        <form class="space-y-6">
+          <!-- Title -->
+          <div>
+            <label class="block text-sm font-medium text-gray-600 mb-2">Title</label>
+            <input type="text" placeholder="Enter task title" class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-300 focus:outline-none" />
+          </div>
+
+          <!-- Description -->
+          <div>
+            <label class="block text-sm font-medium text-gray-600 mb-2">Description</label>
+            <textarea placeholder="Write task details..." class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-300 focus:outline-none"></textarea>
+          </div>
+
+          <!-- Status -->
+          <div>
+            <label class="block text-sm font-medium text-gray-600 mb-2">Status</label>
+            <select class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-300 focus:outline-none">
+              <option value="todo">Todo</option>
+              <option value="inprogress">In Progress</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+
+          <!-- Priority -->
+          <div>
+            <label class="block text-sm font-medium text-gray-600 mb-2">Priority</label>
+            <select class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-300 focus:outline-none">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+
+          <!-- Due Date -->
+          <div>
+            <label class="block text-sm font-medium text-gray-600 mb-2">Due Date</label>
+            <input type="date" class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-300 focus:outline-none" />
+          </div>
+
+          <!-- Tags -->
+          <div>
+            <label class="block text-sm font-medium text-gray-600 mb-2">Tags</label>
+            <input type="text" placeholder="e.g. work, personal" class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-300 focus:outline-none" />
+          </div>
+
+          <!-- Buttons -->
+          <div class="flex justify-end space-x-4">
+            <a href="/dashboard" class="px-5 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100 transition"> Cancel </a>
+            <button type="submit" class="px-5 py-2 rounded-lg bg-indigo-600 text-white shadow hover:bg-indigo-700 transition">Save Task</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </body>
+</html>

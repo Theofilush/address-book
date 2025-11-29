@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Address Book</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  </head>
+  <body class="bg-gray-100 font-sans antialiased">
+    <div class="min-h-screen bg-gradient-to-r from-indigo-50 via-white to-indigo-100 p-8">
+      <!-- Header -->
+      <header class="flex justify-between items-center mb-8">
+        <h1 class="text-3xl font-bold text-indigo-700">✨ Task Detail</h1>
+        <a href="/dashboard" class="text-indigo-600 hover:text-indigo-800 font-medium"> ← Back to Dashboard </a>
+      </header>
+
+      <!-- Task Detail Card -->
+      <section class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8">
+        <!-- Title -->
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-semibold text-gray-800">Belajar Tailwind</h2>
+          <span class="px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-700"> 📝 Todo </span>
+        </div>
+
+        <!-- Description -->
+        <p class="text-gray-600 mb-6">Mempelajari dasar-dasar Tailwind CSS untuk membuat tampilan UI yang modern dan responsif.</p>
+
+        <!-- Metadata -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="space-y-2">
+            <p class="text-sm text-gray-500">Priority</p>
+            <p class="font-medium text-gray-800">High</p>
+          </div>
+          <div class="space-y-2">
+            <p class="text-sm text-gray-500">Due Date</p>
+            <p class="font-medium text-gray-800">2025-12-01</p>
+          </div>
+          <div class="space-y-2">
+            <p class="text-sm text-gray-500">Created At</p>
+            <p class="font-medium text-gray-800">2025-11-29 10:00</p>
+          </div>
+          <div class="space-y-2">
+            <p class="text-sm text-gray-500">Updated At</p>
+            <p class="font-medium text-gray-800">2025-11-29 12:00</p>
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="mb-6">
+          <p class="text-sm text-gray-500 mb-2">Tags</p>
+          <div class="flex space-x-2">
+            <span class="px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-sm">learning</span>
+            <span class="px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-sm">frontend</span>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex justify-end space-x-4">
+          <a href="/dashboard" class="px-5 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100 transition"> Back </a>
+          <button class="px-5 py-2 rounded-lg bg-indigo-600 text-white shadow hover:bg-indigo-700 transition">Edit Task</button>
+          <button class="px-5 py-2 rounded-lg bg-red-600 text-white shadow hover:bg-red-700 transition">Delete Task</button>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
